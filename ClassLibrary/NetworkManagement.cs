@@ -5,17 +5,23 @@ namespace ClassLibrary
 {
 	class NetworkManagement
 	{
+		ManagementClass objMC;
+		ManagementObjectCollection objMOC;
+
+		public NetworkManagement()
+		{
+			objMC = new ManagementClass("Win32_NetworkAdapterConfiguration");
+			objMOC = objMC.GetInstances();
+		}
+
 		/// <summary>
 		/// Set's a new IP Address and it's Submask of the local machine
 		/// </summary>
-		/// <param name="ip_address">The IP Address</param>
-		/// <param name="subnet_mask">The Submask IP Address</param>
+		/// <param name="ipAddress">The IP Address</param>
+		/// <param name="subnetMask">The Submask IP Address</param>
 		/// <remarks>Requires a reference to the System.Management namespace</remarks>
-		public void setIP(string ip_address, string subnet_mask)
+		public void setIP(string ipAddress, string subnetMask)
 		{
-			ManagementClass objMC = new ManagementClass("Win32_NetworkAdapterConfiguration");
-			ManagementObjectCollection objMOC = objMC.GetInstances();
-
 			foreach (ManagementObject objMO in objMOC)
 			{
 				if ((bool)objMO["IPEnabled"])
@@ -26,8 +32,8 @@ namespace ClassLibrary
 						ManagementBaseObject newIP =
 							objMO.GetMethodParameters("EnableStatic");
 
-						newIP["IPAddress"] = new string[] { ip_address };
-						newIP["SubnetMask"] = new string[] { subnet_mask };
+						newIP["IPAddress"] = new string[] { ipAddress };
+						newIP["SubnetMask"] = new string[] { subnetMask };
 
 						setIP = objMO.InvokeMethod("EnableStatic", newIP, null);
 					}
@@ -40,6 +46,7 @@ namespace ClassLibrary
 				}
 			}
 		}
+		
 		/// <summary>
 		/// Set's a new Gateway address of the local machine
 		/// </summary>
@@ -47,9 +54,6 @@ namespace ClassLibrary
 		/// <remarks>Requires a reference to the System.Management namespace</remarks>
 		public void setGateway(string gateway)
 		{
-			ManagementClass objMC = new ManagementClass("Win32_NetworkAdapterConfiguration");
-			ManagementObjectCollection objMOC = objMC.GetInstances();
-
 			foreach (ManagementObject objMO in objMOC)
 			{
 				if ((bool)objMO["IPEnabled"])
@@ -72,6 +76,7 @@ namespace ClassLibrary
 				}
 			}
 		}
+		
 		/// <summary>
 		/// Set's the DNS Server of the local machine
 		/// </summary>
@@ -80,9 +85,6 @@ namespace ClassLibrary
 		/// <remarks>Requires a reference to the System.Management namespace</remarks>
 		public void setDNS(string NIC, string DNS)
 		{
-			ManagementClass objMC = new ManagementClass("Win32_NetworkAdapterConfiguration");
-			ManagementObjectCollection objMOC = objMC.GetInstances();
-
 			foreach (ManagementObject objMO in objMOC)
 			{
 				if ((bool)objMO["IPEnabled"])
@@ -106,6 +108,7 @@ namespace ClassLibrary
 				}
 			}
 		}
+		
 		/// <summary>
 		/// Set's WINS of the local machine
 		/// </summary>
@@ -115,9 +118,6 @@ namespace ClassLibrary
 		/// <remarks>Requires a reference to the System.Management namespace</remarks>
 		public void setWINS(string NIC, string priWINS, string secWINS)
 		{
-			ManagementClass objMC = new ManagementClass("Win32_NetworkAdapterConfiguration");
-			ManagementObjectCollection objMOC = objMC.GetInstances();
-
 			foreach (ManagementObject objMO in objMOC)
 			{
 				if ((bool)objMO["IPEnabled"])
@@ -139,6 +139,59 @@ namespace ClassLibrary
 							throw;
 						}
 					}
+				}
+			}
+		}
+	}
+
+	class NetworkAdapterConfiguration
+	{
+		string adapterName;
+		ManagementClass adapterConfig;
+		ManagementObjectCollection networkCollection;
+
+		public NetworkAdapterConfiguration(string adapterName = "Qualcomm Atheros QCA61x4 Wireless Network Adapter")
+		{
+			this.adapterName = adapterName;
+			adapterConfig = new ManagementClass("Win32_NetworkAdapterConfiguration");
+			networkCollection = adapterConfig.GetInstances();
+		}
+
+		public void ToStaticIP(string ipAddress, string subnetMask = "255.255.255.0", string gateway = "10.156.145.1", string DNS = "210.111.226.7")
+		{
+			foreach (ManagementObject adapter in networkCollection)
+			{
+				if (adapterName.Equals(adapter["Description"]))
+				{
+					// Set IPAddress and Subnet Mask
+					ManagementBaseObject newAddress = adapter.GetMethodParameters("EnableStatic");
+					newAddress["IPAddress"] = new string[] { ipAddress };
+					newAddress["SubnetMask"] = new string[] { subnetMask };
+					
+					// Set DefaultGateway
+					ManagementBaseObject newGateway = adapter.GetMethodParameters("SetGateways");
+					newGateway["DefaultIPGateway"] = new string[] { gateway };
+					newGateway["GatewayCostMetric"] = new int[] { 1 };
+					
+					// Set DNS server 
+					ManagementBaseObject newDNS = adapter.GetMethodParameters("SetDNSServerSearchOrder");
+					newDNS["DNSServerSearchOrder"] = DNS.Split(',');
+					
+					// Configurate
+					adapter.InvokeMethod("EnableStatic", newAddress, null);
+					adapter.InvokeMethod("SetGateways", newGateway, null);
+					adapter.InvokeMethod("SetDNSServerSearchOrder", newDNS, null);
+				}
+			}
+		}
+
+		void ToDynamicIP()
+		{
+			foreach (ManagementObject adapter in networkCollection)
+			{
+				if (adapterName.Equals(adapter["Description"]))
+				{
+					adapter.InvokeMethod("EnableDHCP", null);
 				}
 			}
 		}
