@@ -92,7 +92,7 @@ namespace Config_TCP_IP
 
 		private void helloButton_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("This program made by Nuwanda22","Hello");
+			new HelloForm().Show();
 		}
 
 		private void recheckButton_Click(object sender, EventArgs e)

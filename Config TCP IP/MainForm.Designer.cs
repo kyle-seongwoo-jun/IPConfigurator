@@ -29,6 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.staticRadioButton = new System.Windows.Forms.RadioButton();
 			this.dynamicRadioButton = new System.Windows.Forms.RadioButton();
 			this.radioButtonsGroupBox = new System.Windows.Forms.GroupBox();
@@ -188,6 +189,9 @@
 			// 
 			// recheckButton
 			// 
+			this.recheckButton.BackgroundImage = global::Config_TCP_IP.Properties.Resources.rotate_left_512;
+			this.recheckButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.recheckButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
 			this.recheckButton.Location = new System.Drawing.Point(476, 8);
 			this.recheckButton.Name = "recheckButton";
 			this.recheckButton.Size = new System.Drawing.Size(23, 23);
@@ -211,7 +215,9 @@
 			this.Controls.Add(this.startButton);
 			this.Controls.Add(this.radioButtonsGroupBox);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
+			this.Text = "Configuration TCP/IP";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.radioButtonsGroupBox.ResumeLayout(false);
