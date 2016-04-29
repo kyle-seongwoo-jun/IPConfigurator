@@ -34,10 +34,21 @@ namespace Config_TCP_IP
 
 			mainFormNumberBindingSource.DataSource = number;
 			mainFormGradeBindingSource.DataSource = new int[] { 1, 2/*, 3*/ };
-			
+
 			if (adapterComboBox.SelectedItem as string != null)
 			{
-				dynamicRadioButton.Checked = networkAdapterConfinguration.IsDynamic(adapterComboBox.SelectedItem as string);
+				if (networkAdapterConfinguration.IsDynamic(adapterComboBox.SelectedItem as string))
+				{
+					setEnabled(NetworkAdapterStatus.Dynamic);
+				}
+				else
+				{
+					setEnabled(NetworkAdapterStatus.Static);
+				}
+			}
+			else
+			{
+				setEnabled(NetworkAdapterStatus.None);
 			}
 
 			try
@@ -111,7 +122,18 @@ namespace Config_TCP_IP
 
 			if (adapterComboBox.SelectedItem as string != null)
 			{
-				dynamicRadioButton.Checked = networkAdapterConfinguration.IsDynamic(adapterComboBox.SelectedItem as string);
+				if (networkAdapterConfinguration.IsDynamic(adapterComboBox.SelectedItem as string))
+				{
+					setEnabled(NetworkAdapterStatus.Dynamic);
+				}
+				else
+				{
+					setEnabled(NetworkAdapterStatus.Static);
+				}
+			}
+			else
+			{
+				setEnabled(NetworkAdapterStatus.None);
 			}
 		}
 
@@ -143,6 +165,67 @@ namespace Config_TCP_IP
 		private void helpTopicsHToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("1. Select Static or Dynamic.\n2. Select your grade, and laptop number.\n3. And.. Just Start!!! \n", "How to use it!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void staticRadioButton_CheckedChanged(object sender, EventArgs e)
+		{
+			RadioButton rb = sender as RadioButton;
+			if (rb.Checked)
+			{
+				setEnabled(NetworkAdapterStatus.Static);
+			}
+			else
+			{
+				setEnabled(NetworkAdapterStatus.Dynamic);
+			}
+		}
+
+		enum NetworkAdapterStatus
+		{
+			Static, Dynamic, None
+		}
+
+		private void setEnabled(NetworkAdapterStatus status)
+		{
+			switch (status)
+			{
+				case NetworkAdapterStatus.Static:
+					staticRadioButton.Checked = true;
+					dynamicRadioButton.Checked = false;
+					radioButtonsGroupBox.Enabled = true;
+					gradeComboBox.Enabled = true;
+					numberComboBox.Enabled = true;
+					break;
+
+				case NetworkAdapterStatus.Dynamic:
+					staticRadioButton.Checked = false;
+					dynamicRadioButton.Checked = true;
+					radioButtonsGroupBox.Enabled = true;
+					gradeComboBox.Enabled = false;
+					numberComboBox.Enabled = false;
+					break;
+
+				case NetworkAdapterStatus.None:
+					staticRadioButton.Checked = false;
+					dynamicRadioButton.Checked = false;
+					radioButtonsGroupBox.Enabled = false;
+					gradeComboBox.Enabled = false;
+					numberComboBox.Enabled = false;
+					break;
+			}
+		}
+
+		private void dynamicRadioButton_CheckedChanged(object sender, EventArgs e)
+		{
+			RadioButton rb = sender as RadioButton;
+			if (rb.Checked)
+			{
+				setEnabled(NetworkAdapterStatus.Dynamic);
+			}
+			else
+			{
+				setEnabled(NetworkAdapterStatus.Static);
+			}
 		}
 	}
 }

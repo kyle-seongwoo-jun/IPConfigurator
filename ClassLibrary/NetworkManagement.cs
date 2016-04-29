@@ -17,6 +17,7 @@ namespace ClassLibrary
 
 		public string[] FindNetworkAdapter()
 		{
+			networkCollection = adapterConfig.GetInstances();
 			List<string> temp = new List<string>();
 
 			foreach (ManagementObject adapter in networkCollection)

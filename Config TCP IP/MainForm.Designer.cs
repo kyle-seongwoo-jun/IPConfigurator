@@ -68,9 +68,9 @@
 			this.staticRadioButton.Name = "staticRadioButton";
 			this.staticRadioButton.Size = new System.Drawing.Size(54, 16);
 			this.staticRadioButton.TabIndex = 0;
-			this.staticRadioButton.TabStop = true;
 			this.staticRadioButton.Text = "Static";
 			this.staticRadioButton.UseVisualStyleBackColor = true;
+			this.staticRadioButton.CheckedChanged += new System.EventHandler(this.staticRadioButton_CheckedChanged);
 			// 
 			// dynamicRadioButton
 			// 
@@ -81,9 +81,9 @@
 			this.dynamicRadioButton.Name = "dynamicRadioButton";
 			this.dynamicRadioButton.Size = new System.Drawing.Size(73, 16);
 			this.dynamicRadioButton.TabIndex = 1;
-			this.dynamicRadioButton.TabStop = true;
 			this.dynamicRadioButton.Text = "Dynamic";
 			this.dynamicRadioButton.UseVisualStyleBackColor = true;
+			this.dynamicRadioButton.CheckedChanged += new System.EventHandler(this.dynamicRadioButton_CheckedChanged);
 			// 
 			// radioButtonsGroupBox
 			// 
@@ -231,7 +231,7 @@
 			// 
 			this.exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
 			this.exitXToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-			this.exitXToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.exitXToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
 			this.exitXToolStripMenuItem.Text = "Exit(&X)";
 			this.exitXToolStripMenuItem.Click += new System.EventHandler(this.exitXToolStripMenuItem_Click);
 			// 
