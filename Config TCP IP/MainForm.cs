@@ -94,7 +94,6 @@ namespace Config_TCP_IP
 				try
 				{
 					networkAdapterConfinguration.ToDynamicIP(adapterComboBox.SelectedItem as string);
-
 				}
 				catch (Exception ex)
 				{

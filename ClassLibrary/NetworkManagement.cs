@@ -80,11 +80,11 @@ namespace ClassLibrary
 			{
 				if (adapterName.Equals(adapter["Description"]))
 				{
-					adapter.InvokeMethod("EnableDHCP", null);
+					ManagementBaseObject nullDNS = adapter.GetMethodParameters("SetDNSServerSearchOrder");
+					nullDNS["DNSServerSearchOrder"] = null;
 
-					ManagementBaseObject obj_dns = adapter.GetMethodParameters("EnableDNS");
-					obj_dns["DNSServerSearchOrder"] = "210.111.226.7,210.111.226.8".Split(',');
-					adapter.InvokeMethod("EnableDNS", obj_dns, null);
+					adapter.InvokeMethod("EnableDHCP", null);
+					adapter.InvokeMethod("SetDNSServerSearchOrder", nullDNS, null);
 					
 					return;
 				}
