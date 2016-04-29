@@ -80,8 +80,15 @@ namespace Config_TCP_IP
 			}
 			else if (dynamicRadioButton.Checked)
 			{
-				//TODO: This method has return value... 
-				networkAdapterConfinguration.ToDynamicIP(adapterComboBox.SelectedItem as string);
+				try
+				{
+					networkAdapterConfinguration.ToDynamicIP(adapterComboBox.SelectedItem as string);
+
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show(ex.ToString());
+				}
 				MessageBox.Show("End!");
 			}
 			else
@@ -92,12 +99,20 @@ namespace Config_TCP_IP
 
 		private void helloButton_Click(object sender, EventArgs e)
 		{
-			new HelloForm().Show();
+			foreach(string s in networkAdapterConfinguration.GetIP(adapterComboBox.SelectedItem as string))
+			{
+				MessageBox.Show(s);
+			}
 		}
 
 		private void recheckButton_Click(object sender, EventArgs e)
 		{
 			mainFormAdapterBindingSource.DataSource = networkAdapterConfinguration.FindNetworkAdapter();
+
+			if (adapterComboBox.SelectedItem as string != null)
+			{
+				dynamicRadioButton.Checked = networkAdapterConfinguration.IsDynamic(adapterComboBox.SelectedItem as string);
+			}
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -113,6 +128,21 @@ namespace Config_TCP_IP
 					bw.Write(number);
 				}
 			}
+		}
+
+		private void aboutThisProgramAToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			new AboutForm().Show();
+		}
+
+		private void exitXToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void helpTopicsHToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("1. Select Static or Dynamic.\n2. Select your grade, and laptop number.\n3. And.. Just Start!!! \n", "How to use it!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 	}
 }

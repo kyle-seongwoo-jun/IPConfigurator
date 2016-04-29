@@ -1,6 +1,6 @@
 ﻿namespace Config_TCP_IP
 {
-	partial class HelloForm
+	partial class AboutForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -38,7 +38,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(157, 35);
+			this.label1.Location = new System.Drawing.Point(145, 33);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(205, 12);
 			this.label1.TabIndex = 0;
@@ -57,7 +57,7 @@
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(157, 71);
+			this.label2.Location = new System.Drawing.Point(145, 69);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(70, 12);
 			this.label2.TabIndex = 2;
@@ -66,7 +66,7 @@
 			// linkLabel1
 			// 
 			this.linkLabel1.AutoSize = true;
-			this.linkLabel1.Location = new System.Drawing.Point(157, 86);
+			this.linkLabel1.Location = new System.Drawing.Point(145, 84);
 			this.linkLabel1.Name = "linkLabel1";
 			this.linkLabel1.Size = new System.Drawing.Size(233, 12);
 			this.linkLabel1.TabIndex = 3;
@@ -74,7 +74,7 @@
 			this.linkLabel1.Text = "https://github.com/Nuwanda22/ipconfig";
 			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
 			// 
-			// HelloForm
+			// AboutForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -85,7 +85,7 @@
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.label1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.Name = "HelloForm";
+			this.Name = "AboutForm";
 			this.Text = "HelloForm";
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);

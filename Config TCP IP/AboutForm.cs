@@ -11,9 +11,9 @@ using System.Diagnostics;
 
 namespace Config_TCP_IP
 {
-	public partial class HelloForm : Form
+	public partial class AboutForm : Form
 	{
-		public HelloForm()
+		public AboutForm()
 		{
 			InitializeComponent();
 		}

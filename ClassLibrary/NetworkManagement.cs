@@ -80,7 +80,42 @@ namespace ClassLibrary
 				if (adapterName.Equals(adapter["Description"]))
 				{
 					adapter.InvokeMethod("EnableDHCP", null);
-					adapter.InvokeMethod("EnableDNS", null);
+
+					ManagementBaseObject obj_dns = adapter.GetMethodParameters("EnableDNS");
+					obj_dns["DNSServerSearchOrder"] = "210.111.226.7,210.111.226.8".Split(',');
+					adapter.InvokeMethod("EnableDNS", obj_dns, null);
+					
+					return;
+				}
+			}
+
+			throw new Exception();
+		}
+
+		public string[] GetIP(string adapterName)
+		{
+			List<string> list = new List<string>();
+
+			foreach (ManagementObject adapter in networkCollection)
+			{
+				if (adapterName.Equals(adapter["Description"]))
+				{
+					string ip = (adapter["IPAddress"] as string[])[0];
+					string subnetMask = (adapter["IPSubnet"] as string[])[0];
+					string gateway = (adapter["DefaultIPGateway"] as string[])[0];
+					string[] dns = (adapter["DNSServerSearchOrder"] as string[]);
+
+					list.Add("IP Address : " + ip);
+					list.Add("Subnet Mask : " + subnetMask);
+					list.Add("Default Gateway : " + gateway);
+					list.Add("DNS Server : " + dns[0]);
+
+					if (dns.Length > 1)
+					{
+						list[3] += ", " + dns[1];
+					}
+
+					return list.ToArray(); 
 				}
 			}
 
