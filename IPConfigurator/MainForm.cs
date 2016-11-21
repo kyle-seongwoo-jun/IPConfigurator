@@ -10,6 +10,7 @@ namespace IPConfigurator
 	public partial class MainForm : Form
 	{
 		NetworkAdapterConfigurator networkAdapterConfingurator;
+		List<NetworkAdapter> adapters;
 
 		/// <summary>
 		/// Constructor
@@ -18,6 +19,7 @@ namespace IPConfigurator
 		{
 			InitializeComponent();
 			networkAdapterConfingurator = new NetworkAdapterConfigurator();
+			adapters = networkAdapterConfingurator.NetworkAdapters;
 		}
 
 		#region Event Listener
@@ -25,14 +27,16 @@ namespace IPConfigurator
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			// Initialize BingingSource
-			adapterBindingSource.DataSource = networkAdapterConfingurator.NetworkAdapters;
+			adapterBindingSource.DataSource = adapters;
 			numberBindingSource.DataSource = Enumerable.Range(1, 80);
 			gradeBindingSource.DataSource = Enumerable.Range(1, 2);
 
 			// Initialize component's state 
-			if (adapterComboBox.SelectedItem as string != null)
+			if (adapterComboBox.SelectedItem as NetworkAdapter != null)
 			{
-				if (networkAdapterConfingurator.IsDynamic(adapterComboBox.SelectedItem as string))
+				var adapter = adapterComboBox.SelectedItem as NetworkAdapter;
+
+				if (adapter.IsDynamic)
 				{
 					setEnabled(NetworkAdapterStatus.Dynamic);
 				}
@@ -68,20 +72,22 @@ namespace IPConfigurator
 				int grade = (int)gradeComboBox.SelectedItem;
 				int number = (int)numberComboBox.SelectedItem;
 
-				networkAdapterConfingurator.ToStaticIP(adapterComboBox.SelectedItem as string, "10.156.145." + getIdentificationNumber(grade, number));
-				MessageBox.Show("End!");
+				var adapter = adapterComboBox.SelectedItem as NetworkAdapter;
+				adapter.ToStaticIP("10.156.145." + getIdentificationNumber(grade, number));
+				MessageBox.Show("Configured.");
 			}
 			else if (dynamicRadioButton.Checked)
 			{
 				try
 				{
-					networkAdapterConfingurator.ToDynamicIP(adapterComboBox.SelectedItem as string);
+					var adapter = adapterComboBox.SelectedItem as NetworkAdapter;
+					adapter.ToDynamicIP();
 				}
 				catch (Exception ex)
 				{
 					MessageBox.Show(ex.ToString());
 				}
-				MessageBox.Show("End!");
+				MessageBox.Show("Configured.");
 			}
 			else
 			{
@@ -92,9 +98,10 @@ namespace IPConfigurator
 		private void checkIPButton_Click(object sender, EventArgs e)
 		{
 			StringBuilder sb = new StringBuilder();
-			foreach (string s in networkAdapterConfingurator.IPInformation(adapterComboBox.SelectedItem as string))
+			var adapter = adapterComboBox.SelectedItem as NetworkAdapter;
+			foreach (var item in adapter.IPInformation)
 			{
-				sb.AppendLine(s);
+				sb.AppendLine(item.Key + " : " + item.Value);
 			}
 
 			MessageBox.Show(sb.ToString());
@@ -104,9 +111,11 @@ namespace IPConfigurator
 		{
 			adapterBindingSource.DataSource = networkAdapterConfingurator.NetworkAdapters;
 
-			if (adapterComboBox.SelectedItem as string != null)
+			if (adapterComboBox.SelectedItem as NetworkAdapter != null)
 			{
-				if (networkAdapterConfingurator.IsDynamic(adapterComboBox.SelectedItem as string))
+				var adapter = adapterComboBox.SelectedItem as NetworkAdapter;
+
+				if (adapter.IsDynamic)
 				{
 					setEnabled(NetworkAdapterStatus.Dynamic);
 				}
@@ -123,15 +132,15 @@ namespace IPConfigurator
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			using (FileStream fs = File.Create(@"C:\ipconfig.dat"))
+			using (FileStream file = File.Create(@"C:\ipconfig.dat"))
 			{
-				using (BinaryWriter bw = new BinaryWriter(fs))
+				using (BinaryWriter writer = new BinaryWriter(file))
 				{
 					int grade = (int)gradeComboBox.SelectedItem;
 					int number = (int)numberComboBox.SelectedItem;
 
-					bw.Write(grade);
-					bw.Write(number);
+					writer.Write(grade);
+					writer.Write(number);
 				}
 			}
 		}
@@ -153,8 +162,8 @@ namespace IPConfigurator
 
 		private void staticRadioButton_CheckedChanged(object sender, EventArgs e)
 		{
-			RadioButton rb = sender as RadioButton;
-			if (rb.Checked)
+			RadioButton radioButton = sender as RadioButton;
+			if (radioButton.Checked)
 			{
 				setEnabled(NetworkAdapterStatus.Static);
 			}
@@ -166,8 +175,8 @@ namespace IPConfigurator
 
 		private void dynamicRadioButton_CheckedChanged(object sender, EventArgs e)
 		{
-			RadioButton rb = sender as RadioButton;
-			if (rb.Checked)
+			RadioButton radioButton = sender as RadioButton;
+			if (radioButton.Checked)
 			{
 				setEnabled(NetworkAdapterStatus.Dynamic);
 			}
