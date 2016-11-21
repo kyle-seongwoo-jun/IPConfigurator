@@ -7,8 +7,8 @@
     <ProjectGuid>{5839A4EF-F66E-44F1-B607-232F379F01AD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Config_TCP_IP</RootNamespace>
-    <AssemblyName>Config TCP IP</AssemblyName>
+    <RootNamespace>IPConfigurator</RootNamespace>
+    <AssemblyName>IP Configurator</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -110,6 +110,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NetworkAdapterConfigurator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AboutForm.resx">

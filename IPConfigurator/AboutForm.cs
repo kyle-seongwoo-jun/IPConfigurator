@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace Config_TCP_IP
+namespace IPConfigurator
 {
 	public partial class AboutForm : Form
 	{

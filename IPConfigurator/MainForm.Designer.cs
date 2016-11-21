@@ -1,4 +1,4 @@
-﻿namespace Config_TCP_IP
+﻿namespace IPConfigurator
 {
 	partial class MainForm
 	{
@@ -37,15 +37,15 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.adapterComboBox = new System.Windows.Forms.ComboBox();
-			this.mainFormAdapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.adapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.numberComboBox = new System.Windows.Forms.ComboBox();
-			this.mainFormNumberBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.numberBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.gradeComboBox = new System.Windows.Forms.ComboBox();
-			this.mainFormGradeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.gradeBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.label3 = new System.Windows.Forms.Label();
-			this.helloButton = new System.Windows.Forms.Button();
+			this.checkIPButton = new System.Windows.Forms.Button();
 			this.recheckButton = new System.Windows.Forms.Button();
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.menuStrip = new System.Windows.Forms.MenuStrip();
 			this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exitXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,10 +53,10 @@
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.aboutThisProgramAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.radioButtonsGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.mainFormAdapterBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.mainFormNumberBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.mainFormGradeBindingSource)).BeginInit();
-			this.menuStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.adapterBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numberBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.gradeBindingSource)).BeginInit();
+			this.menuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// staticRadioButton
@@ -133,22 +133,23 @@
 			// 
 			this.adapterComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.adapterComboBox.DataSource = this.mainFormAdapterBindingSource;
+			this.adapterComboBox.DataSource = this.adapterBindingSource;
 			this.adapterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.adapterComboBox.Location = new System.Drawing.Point(73, 33);
 			this.adapterComboBox.Name = "adapterComboBox";
 			this.adapterComboBox.Size = new System.Drawing.Size(398, 20);
 			this.adapterComboBox.TabIndex = 8;
+			this.adapterComboBox.SelectedIndexChanged += new System.EventHandler(this.adapterComboBox_SelectedIndexChanged);
 			// 
-			// mainFormAdapterBindingSource
+			// adapterBindingSource
 			// 
-			this.mainFormAdapterBindingSource.DataSource = typeof(Config_TCP_IP.MainForm);
+			this.adapterBindingSource.DataSource = typeof(IPConfigurator.MainForm);
 			// 
 			// numberComboBox
 			// 
 			this.numberComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.numberComboBox.DataSource = this.mainFormNumberBindingSource;
+			this.numberComboBox.DataSource = this.numberBindingSource;
 			this.numberComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.numberComboBox.FormattingEnabled = true;
 			this.numberComboBox.Location = new System.Drawing.Point(238, 86);
@@ -156,15 +157,15 @@
 			this.numberComboBox.Size = new System.Drawing.Size(173, 20);
 			this.numberComboBox.TabIndex = 9;
 			// 
-			// mainFormNumberBindingSource
+			// numberBindingSource
 			// 
-			this.mainFormNumberBindingSource.DataSource = typeof(Config_TCP_IP.MainForm);
+			this.numberBindingSource.DataSource = typeof(IPConfigurator.MainForm);
 			// 
 			// gradeComboBox
 			// 
 			this.gradeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.gradeComboBox.DataSource = this.mainFormGradeBindingSource;
+			this.gradeComboBox.DataSource = this.gradeBindingSource;
 			this.gradeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.gradeComboBox.FormattingEnabled = true;
 			this.gradeComboBox.Location = new System.Drawing.Point(238, 60);
@@ -172,9 +173,9 @@
 			this.gradeComboBox.Size = new System.Drawing.Size(173, 20);
 			this.gradeComboBox.TabIndex = 11;
 			// 
-			// mainFormGradeBindingSource
+			// gradeBindingSource
 			// 
-			this.mainFormGradeBindingSource.DataSource = typeof(Config_TCP_IP.MainForm);
+			this.gradeBindingSource.DataSource = typeof(IPConfigurator.MainForm);
 			// 
 			// label3
 			// 
@@ -185,19 +186,19 @@
 			this.label3.TabIndex = 12;
 			this.label3.Text = "Adapter";
 			// 
-			// helloButton
+			// checkIPButton
 			// 
-			this.helloButton.Location = new System.Drawing.Point(424, 58);
-			this.helloButton.Name = "helloButton";
-			this.helloButton.Size = new System.Drawing.Size(75, 23);
-			this.helloButton.TabIndex = 13;
-			this.helloButton.Text = "My IP";
-			this.helloButton.UseVisualStyleBackColor = true;
-			this.helloButton.Click += new System.EventHandler(this.helloButton_Click);
+			this.checkIPButton.Location = new System.Drawing.Point(424, 58);
+			this.checkIPButton.Name = "checkIPButton";
+			this.checkIPButton.Size = new System.Drawing.Size(75, 23);
+			this.checkIPButton.TabIndex = 13;
+			this.checkIPButton.Text = "My IP";
+			this.checkIPButton.UseVisualStyleBackColor = true;
+			this.checkIPButton.Click += new System.EventHandler(this.checkIPButton_Click);
 			// 
 			// recheckButton
 			// 
-			this.recheckButton.BackgroundImage = global::Config_TCP_IP.Properties.Resources.rotate_left_512;
+			this.recheckButton.BackgroundImage = global::IPConfigurator.Properties.Resources.rotate_left_512;
 			this.recheckButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.recheckButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
 			this.recheckButton.Location = new System.Drawing.Point(477, 31);
@@ -207,17 +208,17 @@
 			this.recheckButton.UseVisualStyleBackColor = true;
 			this.recheckButton.Click += new System.EventHandler(this.recheckButton_Click);
 			// 
-			// menuStrip1
+			// menuStrip
 			// 
-			this.menuStrip1.BackColor = System.Drawing.SystemColors.Window;
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.menuStrip.BackColor = System.Drawing.SystemColors.Window;
+			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileFToolStripMenuItem,
             this.helpHToolStripMenuItem});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(511, 24);
-			this.menuStrip1.TabIndex = 15;
-			this.menuStrip1.Text = "menuStrip1";
+			this.menuStrip.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip.Name = "menuStrip";
+			this.menuStrip.Size = new System.Drawing.Size(511, 24);
+			this.menuStrip.TabIndex = 15;
+			this.menuStrip.Text = "menuStrip";
 			// 
 			// fileFToolStripMenuItem
 			// 
@@ -271,7 +272,7 @@
 			this.BackColor = System.Drawing.SystemColors.Control;
 			this.ClientSize = new System.Drawing.Size(511, 117);
 			this.Controls.Add(this.recheckButton);
-			this.Controls.Add(this.helloButton);
+			this.Controls.Add(this.checkIPButton);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.gradeComboBox);
 			this.Controls.Add(this.numberComboBox);
@@ -280,21 +281,21 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.startButton);
 			this.Controls.Add(this.radioButtonsGroupBox);
-			this.Controls.Add(this.menuStrip1);
+			this.Controls.Add(this.menuStrip);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MainMenuStrip = this.menuStrip1;
+			this.MainMenuStrip = this.menuStrip;
 			this.Name = "MainForm";
 			this.Text = "Configuration TCP/IP";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
 			this.radioButtonsGroupBox.ResumeLayout(false);
 			this.radioButtonsGroupBox.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.mainFormAdapterBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.mainFormNumberBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.mainFormGradeBindingSource)).EndInit();
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.adapterBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numberBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.gradeBindingSource)).EndInit();
+			this.menuStrip.ResumeLayout(false);
+			this.menuStrip.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -310,14 +311,14 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.ComboBox adapterComboBox;
 		private System.Windows.Forms.ComboBox numberComboBox;
-		private System.Windows.Forms.BindingSource mainFormAdapterBindingSource;
+		private System.Windows.Forms.BindingSource adapterBindingSource;
 		private System.Windows.Forms.ComboBox gradeComboBox;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Button helloButton;
-		private System.Windows.Forms.BindingSource mainFormNumberBindingSource;
-		private System.Windows.Forms.BindingSource mainFormGradeBindingSource;
+		private System.Windows.Forms.Button checkIPButton;
+		private System.Windows.Forms.BindingSource numberBindingSource;
+		private System.Windows.Forms.BindingSource gradeBindingSource;
 		private System.Windows.Forms.Button recheckButton;
-		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.MenuStrip menuStrip;
 		private System.Windows.Forms.ToolStripMenuItem fileFToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exitXToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem helpHToolStripMenuItem;

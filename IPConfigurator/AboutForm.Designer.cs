@@ -1,4 +1,4 @@
-﻿namespace Config_TCP_IP
+﻿namespace IPConfigurator
 {
 	partial class AboutForm
 	{
@@ -46,7 +46,7 @@
 			// 
 			// pictureBox1
 			// 
-			this.pictureBox1.BackgroundImage = global::Config_TCP_IP.Properties.Resources._0000205_categories_site_map_300;
+			this.pictureBox1.BackgroundImage = global::IPConfigurator.Properties.Resources._0000205_categories_site_map_300;
 			this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.pictureBox1.Location = new System.Drawing.Point(12, 12);
 			this.pictureBox1.Name = "pictureBox1";

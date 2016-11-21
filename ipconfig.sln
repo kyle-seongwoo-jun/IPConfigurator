@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Config TCP IP", "Config TCP IP\Config TCP IP.csproj", "{5839A4EF-F66E-44F1-B607-232F379F01AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPConfigurator", "IPConfigurator\IPConfigurator.csproj", "{5839A4EF-F66E-44F1-B607-232F379F01AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
