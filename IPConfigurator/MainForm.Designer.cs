@@ -30,240 +30,241 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-			this.staticRadioButton = new System.Windows.Forms.RadioButton();
-			this.dynamicRadioButton = new System.Windows.Forms.RadioButton();
-			this.radioButtonsGroupBox = new System.Windows.Forms.GroupBox();
-			this.startButton = new System.Windows.Forms.Button();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.adapterComboBox = new System.Windows.Forms.ComboBox();
-			this.adapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.numberComboBox = new System.Windows.Forms.ComboBox();
-			this.numberBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.gradeComboBox = new System.Windows.Forms.ComboBox();
-			this.gradeBindingSource = new System.Windows.Forms.BindingSource(this.components);
-			this.label3 = new System.Windows.Forms.Label();
-			this.checkIPButton = new System.Windows.Forms.Button();
-			this.recheckButton = new System.Windows.Forms.Button();
-			this.menuStrip = new System.Windows.Forms.MenuStrip();
-			this.fileFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.exitXToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.helpHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.helpTopicsHToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.aboutThisProgramAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.radioButtonsGroupBox.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.adapterBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.numberBindingSource)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.gradeBindingSource)).BeginInit();
-			this.menuStrip.SuspendLayout();
+			this.StaticRadioButton = new System.Windows.Forms.RadioButton();
+			this.DynamicRadioButton = new System.Windows.Forms.RadioButton();
+			this.RadioButtonGroupBox = new System.Windows.Forms.GroupBox();
+			this.SaveButton = new System.Windows.Forms.Button();
+			this.GradeLabel = new System.Windows.Forms.Label();
+			this.NumberLabel = new System.Windows.Forms.Label();
+			this.AdapterComboBox = new System.Windows.Forms.ComboBox();
+			this.AdapterBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.NumberComboBox = new System.Windows.Forms.ComboBox();
+			this.NumberBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.GradeComboBox = new System.Windows.Forms.ComboBox();
+			this.GradeBindingSource = new System.Windows.Forms.BindingSource(this.components);
+			this.AdapterLabel = new System.Windows.Forms.Label();
+			this.IPButton = new System.Windows.Forms.Button();
+			this.ReloadButton = new System.Windows.Forms.Button();
+			this.MenuStrip = new System.Windows.Forms.MenuStrip();
+			this.FileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.HelpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.HelpTopicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.AboutThisProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.RadioButtonGroupBox.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.AdapterBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.NumberBindingSource)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.GradeBindingSource)).BeginInit();
+			this.MenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// staticRadioButton
+			// StaticRadioButton
 			// 
-			this.staticRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.StaticRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-			this.staticRadioButton.AutoSize = true;
-			this.staticRadioButton.Location = new System.Drawing.Point(6, 20);
-			this.staticRadioButton.Name = "staticRadioButton";
-			this.staticRadioButton.Size = new System.Drawing.Size(54, 16);
-			this.staticRadioButton.TabIndex = 0;
-			this.staticRadioButton.Text = "Static";
-			this.staticRadioButton.UseVisualStyleBackColor = true;
-			this.staticRadioButton.CheckedChanged += new System.EventHandler(this.staticRadioButton_CheckedChanged);
+			this.StaticRadioButton.AutoSize = true;
+			this.StaticRadioButton.Checked = true;
+			this.StaticRadioButton.Location = new System.Drawing.Point(6, 20);
+			this.StaticRadioButton.Name = "StaticRadioButton";
+			this.StaticRadioButton.Size = new System.Drawing.Size(54, 16);
+			this.StaticRadioButton.TabIndex = 0;
+			this.StaticRadioButton.TabStop = true;
+			this.StaticRadioButton.Text = "Static";
+			this.StaticRadioButton.UseVisualStyleBackColor = true;
+			this.StaticRadioButton.CheckedChanged += new System.EventHandler(this.StaticRadioButton_CheckedChanged);
 			// 
-			// dynamicRadioButton
+			// DynamicRadioButton
 			// 
-			this.dynamicRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.DynamicRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.dynamicRadioButton.AutoSize = true;
-			this.dynamicRadioButton.Location = new System.Drawing.Point(72, 20);
-			this.dynamicRadioButton.Name = "dynamicRadioButton";
-			this.dynamicRadioButton.Size = new System.Drawing.Size(73, 16);
-			this.dynamicRadioButton.TabIndex = 1;
-			this.dynamicRadioButton.Text = "Dynamic";
-			this.dynamicRadioButton.UseVisualStyleBackColor = true;
-			this.dynamicRadioButton.CheckedChanged += new System.EventHandler(this.dynamicRadioButton_CheckedChanged);
+			this.DynamicRadioButton.AutoSize = true;
+			this.DynamicRadioButton.Location = new System.Drawing.Point(72, 20);
+			this.DynamicRadioButton.Name = "DynamicRadioButton";
+			this.DynamicRadioButton.Size = new System.Drawing.Size(73, 16);
+			this.DynamicRadioButton.TabIndex = 1;
+			this.DynamicRadioButton.Text = "Dynamic";
+			this.DynamicRadioButton.UseVisualStyleBackColor = true;
 			// 
-			// radioButtonsGroupBox
+			// RadioButtonGroupBox
 			// 
-			this.radioButtonsGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.radioButtonsGroupBox.Controls.Add(this.staticRadioButton);
-			this.radioButtonsGroupBox.Controls.Add(this.dynamicRadioButton);
-			this.radioButtonsGroupBox.Location = new System.Drawing.Point(19, 56);
-			this.radioButtonsGroupBox.Name = "radioButtonsGroupBox";
-			this.radioButtonsGroupBox.Size = new System.Drawing.Size(151, 47);
-			this.radioButtonsGroupBox.TabIndex = 2;
-			this.radioButtonsGroupBox.TabStop = false;
+			this.RadioButtonGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.RadioButtonGroupBox.Controls.Add(this.StaticRadioButton);
+			this.RadioButtonGroupBox.Controls.Add(this.DynamicRadioButton);
+			this.RadioButtonGroupBox.Location = new System.Drawing.Point(19, 56);
+			this.RadioButtonGroupBox.Name = "RadioButtonGroupBox";
+			this.RadioButtonGroupBox.Size = new System.Drawing.Size(151, 47);
+			this.RadioButtonGroupBox.TabIndex = 2;
+			this.RadioButtonGroupBox.TabStop = false;
 			// 
-			// startButton
+			// SaveButton
 			// 
-			this.startButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.startButton.Location = new System.Drawing.Point(424, 86);
-			this.startButton.Name = "startButton";
-			this.startButton.Size = new System.Drawing.Size(75, 23);
-			this.startButton.TabIndex = 3;
-			this.startButton.Text = "Start";
-			this.startButton.UseVisualStyleBackColor = true;
-			this.startButton.Click += new System.EventHandler(this.startButton_Click);
+			this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.SaveButton.Location = new System.Drawing.Point(424, 86);
+			this.SaveButton.Name = "SaveButton";
+			this.SaveButton.Size = new System.Drawing.Size(75, 23);
+			this.SaveButton.TabIndex = 3;
+			this.SaveButton.Text = "Save";
+			this.SaveButton.UseVisualStyleBackColor = true;
+			this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
 			// 
-			// label1
+			// GradeLabel
 			// 
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.GradeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(182, 67);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(39, 12);
-			this.label1.TabIndex = 6;
-			this.label1.Text = "Grade";
+			this.GradeLabel.AutoSize = true;
+			this.GradeLabel.Location = new System.Drawing.Point(182, 67);
+			this.GradeLabel.Name = "GradeLabel";
+			this.GradeLabel.Size = new System.Drawing.Size(39, 12);
+			this.GradeLabel.TabIndex = 6;
+			this.GradeLabel.Text = "Grade";
 			// 
-			// label2
+			// NumberLabel
 			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.NumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(182, 89);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(50, 12);
-			this.label2.TabIndex = 7;
-			this.label2.Text = "Number";
+			this.NumberLabel.AutoSize = true;
+			this.NumberLabel.Location = new System.Drawing.Point(182, 89);
+			this.NumberLabel.Name = "NumberLabel";
+			this.NumberLabel.Size = new System.Drawing.Size(50, 12);
+			this.NumberLabel.TabIndex = 7;
+			this.NumberLabel.Text = "Number";
 			// 
-			// adapterComboBox
+			// AdapterComboBox
 			// 
-			this.adapterComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+			this.AdapterComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.adapterComboBox.DataSource = this.adapterBindingSource;
-			this.adapterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.adapterComboBox.Location = new System.Drawing.Point(73, 33);
-			this.adapterComboBox.Name = "adapterComboBox";
-			this.adapterComboBox.Size = new System.Drawing.Size(398, 20);
-			this.adapterComboBox.TabIndex = 8;
-			this.adapterComboBox.SelectedIndexChanged += new System.EventHandler(this.adapterComboBox_SelectedIndexChanged);
+			this.AdapterComboBox.DataSource = this.AdapterBindingSource;
+			this.AdapterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.AdapterComboBox.Location = new System.Drawing.Point(73, 33);
+			this.AdapterComboBox.Name = "AdapterComboBox";
+			this.AdapterComboBox.Size = new System.Drawing.Size(398, 20);
+			this.AdapterComboBox.TabIndex = 8;
+			this.AdapterComboBox.SelectedIndexChanged += new System.EventHandler(this.AdapterComboBox_SelectedIndexChanged);
 			// 
-			// adapterBindingSource
+			// AdapterBindingSource
 			// 
-			this.adapterBindingSource.DataSource = typeof(IPConfigurator.MainForm);
+			this.AdapterBindingSource.DataSource = typeof(IPConfigurator.MainForm);
 			// 
-			// numberComboBox
+			// NumberComboBox
 			// 
-			this.numberComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.NumberComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.numberComboBox.DataSource = this.numberBindingSource;
-			this.numberComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.numberComboBox.FormattingEnabled = true;
-			this.numberComboBox.Location = new System.Drawing.Point(238, 86);
-			this.numberComboBox.Name = "numberComboBox";
-			this.numberComboBox.Size = new System.Drawing.Size(173, 20);
-			this.numberComboBox.TabIndex = 9;
+			this.NumberComboBox.DataSource = this.NumberBindingSource;
+			this.NumberComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.NumberComboBox.FormattingEnabled = true;
+			this.NumberComboBox.Location = new System.Drawing.Point(238, 86);
+			this.NumberComboBox.Name = "NumberComboBox";
+			this.NumberComboBox.Size = new System.Drawing.Size(173, 20);
+			this.NumberComboBox.TabIndex = 9;
 			// 
-			// numberBindingSource
+			// NumberBindingSource
 			// 
-			this.numberBindingSource.DataSource = typeof(IPConfigurator.MainForm);
+			this.NumberBindingSource.DataSource = typeof(IPConfigurator.MainForm);
 			// 
-			// gradeComboBox
+			// GradeComboBox
 			// 
-			this.gradeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.GradeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.gradeComboBox.DataSource = this.gradeBindingSource;
-			this.gradeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.gradeComboBox.FormattingEnabled = true;
-			this.gradeComboBox.Location = new System.Drawing.Point(238, 60);
-			this.gradeComboBox.Name = "gradeComboBox";
-			this.gradeComboBox.Size = new System.Drawing.Size(173, 20);
-			this.gradeComboBox.TabIndex = 11;
+			this.GradeComboBox.DataSource = this.GradeBindingSource;
+			this.GradeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.GradeComboBox.FormattingEnabled = true;
+			this.GradeComboBox.Location = new System.Drawing.Point(238, 60);
+			this.GradeComboBox.Name = "GradeComboBox";
+			this.GradeComboBox.Size = new System.Drawing.Size(173, 20);
+			this.GradeComboBox.TabIndex = 11;
 			// 
-			// gradeBindingSource
+			// GradeBindingSource
 			// 
-			this.gradeBindingSource.DataSource = typeof(IPConfigurator.MainForm);
+			this.GradeBindingSource.DataSource = typeof(IPConfigurator.MainForm);
 			// 
-			// label3
+			// AdapterLabel
 			// 
-			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(18, 36);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(48, 12);
-			this.label3.TabIndex = 12;
-			this.label3.Text = "Adapter";
+			this.AdapterLabel.AutoSize = true;
+			this.AdapterLabel.Location = new System.Drawing.Point(18, 36);
+			this.AdapterLabel.Name = "AdapterLabel";
+			this.AdapterLabel.Size = new System.Drawing.Size(48, 12);
+			this.AdapterLabel.TabIndex = 12;
+			this.AdapterLabel.Text = "Adapter";
 			// 
-			// checkIPButton
+			// IPButton
 			// 
-			this.checkIPButton.Location = new System.Drawing.Point(424, 58);
-			this.checkIPButton.Name = "checkIPButton";
-			this.checkIPButton.Size = new System.Drawing.Size(75, 23);
-			this.checkIPButton.TabIndex = 13;
-			this.checkIPButton.Text = "My IP";
-			this.checkIPButton.UseVisualStyleBackColor = true;
-			this.checkIPButton.Click += new System.EventHandler(this.checkIPButton_Click);
+			this.IPButton.Location = new System.Drawing.Point(424, 58);
+			this.IPButton.Name = "IPButton";
+			this.IPButton.Size = new System.Drawing.Size(75, 23);
+			this.IPButton.TabIndex = 13;
+			this.IPButton.Text = "IP";
+			this.IPButton.UseVisualStyleBackColor = true;
+			this.IPButton.Click += new System.EventHandler(this.IPButton_Click);
 			// 
-			// recheckButton
+			// ReloadButton
 			// 
-			this.recheckButton.BackgroundImage = global::IPConfigurator.Properties.Resources.rotate_left_512;
-			this.recheckButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-			this.recheckButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.recheckButton.Location = new System.Drawing.Point(477, 31);
-			this.recheckButton.Name = "recheckButton";
-			this.recheckButton.Size = new System.Drawing.Size(23, 23);
-			this.recheckButton.TabIndex = 14;
-			this.recheckButton.UseVisualStyleBackColor = true;
-			this.recheckButton.Click += new System.EventHandler(this.recheckButton_Click);
+			this.ReloadButton.BackgroundImage = global::IPConfigurator.Properties.Resources.rotate_left_512;
+			this.ReloadButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.ReloadButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+			this.ReloadButton.Location = new System.Drawing.Point(477, 31);
+			this.ReloadButton.Name = "ReloadButton";
+			this.ReloadButton.Size = new System.Drawing.Size(23, 23);
+			this.ReloadButton.TabIndex = 14;
+			this.ReloadButton.UseVisualStyleBackColor = true;
+			this.ReloadButton.Click += new System.EventHandler(this.ReloadButton_Click);
 			// 
-			// menuStrip
+			// MenuStrip
 			// 
-			this.menuStrip.BackColor = System.Drawing.SystemColors.Window;
-			this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileFToolStripMenuItem,
-            this.helpHToolStripMenuItem});
-			this.menuStrip.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip.Name = "menuStrip";
-			this.menuStrip.Size = new System.Drawing.Size(511, 24);
-			this.menuStrip.TabIndex = 15;
-			this.menuStrip.Text = "menuStrip";
+			this.MenuStrip.BackColor = System.Drawing.SystemColors.Window;
+			this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.FileToolStripMenuItem,
+            this.HelpToolStripMenuItem});
+			this.MenuStrip.Location = new System.Drawing.Point(0, 0);
+			this.MenuStrip.Name = "MenuStrip";
+			this.MenuStrip.Size = new System.Drawing.Size(511, 24);
+			this.MenuStrip.TabIndex = 15;
+			this.MenuStrip.Text = "menuStrip";
 			// 
-			// fileFToolStripMenuItem
+			// FileToolStripMenuItem
 			// 
-			this.fileFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitXToolStripMenuItem});
-			this.fileFToolStripMenuItem.Name = "fileFToolStripMenuItem";
-			this.fileFToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-			this.fileFToolStripMenuItem.Text = "File(&F)";
+			this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ExitToolStripMenuItem});
+			this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
+			this.FileToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+			this.FileToolStripMenuItem.Text = "File(&F)";
 			// 
-			// exitXToolStripMenuItem
+			// ExitToolStripMenuItem
 			// 
-			this.exitXToolStripMenuItem.Name = "exitXToolStripMenuItem";
-			this.exitXToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-			this.exitXToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-			this.exitXToolStripMenuItem.Text = "Exit(&X)";
-			this.exitXToolStripMenuItem.Click += new System.EventHandler(this.exitXToolStripMenuItem_Click);
+			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+			this.ExitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+			this.ExitToolStripMenuItem.Text = "Exit(&X)";
+			this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
-			// helpHToolStripMenuItem
+			// HelpToolStripMenuItem
 			// 
-			this.helpHToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpTopicsHToolStripMenuItem,
-            this.toolStripSeparator1,
-            this.aboutThisProgramAToolStripMenuItem});
-			this.helpHToolStripMenuItem.Name = "helpHToolStripMenuItem";
-			this.helpHToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-			this.helpHToolStripMenuItem.Text = "Help(&H)";
+			this.HelpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.HelpTopicsToolStripMenuItem,
+            this.ToolStripSeparator1,
+            this.AboutThisProgramToolStripMenuItem});
+			this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
+			this.HelpToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+			this.HelpToolStripMenuItem.Text = "Help(&H)";
 			// 
-			// helpTopicsHToolStripMenuItem
+			// HelpTopicsToolStripMenuItem
 			// 
-			this.helpTopicsHToolStripMenuItem.Name = "helpTopicsHToolStripMenuItem";
-			this.helpTopicsHToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-			this.helpTopicsHToolStripMenuItem.Text = "Help Topics(&H)";
-			this.helpTopicsHToolStripMenuItem.Click += new System.EventHandler(this.helpTopicsHToolStripMenuItem_Click);
+			this.HelpTopicsToolStripMenuItem.Name = "HelpTopicsToolStripMenuItem";
+			this.HelpTopicsToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+			this.HelpTopicsToolStripMenuItem.Text = "Help Topics(&H)";
+			this.HelpTopicsToolStripMenuItem.Click += new System.EventHandler(this.HelpTopicsToolStripMenuItem_Click);
 			// 
-			// toolStripSeparator1
+			// ToolStripSeparator1
 			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(195, 6);
+			this.ToolStripSeparator1.Name = "ToolStripSeparator1";
+			this.ToolStripSeparator1.Size = new System.Drawing.Size(195, 6);
 			// 
-			// aboutThisProgramAToolStripMenuItem
+			// AboutThisProgramToolStripMenuItem
 			// 
-			this.aboutThisProgramAToolStripMenuItem.Name = "aboutThisProgramAToolStripMenuItem";
-			this.aboutThisProgramAToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
-			this.aboutThisProgramAToolStripMenuItem.Text = "About This Program(&A)";
-			this.aboutThisProgramAToolStripMenuItem.Click += new System.EventHandler(this.aboutThisProgramAToolStripMenuItem_Click);
+			this.AboutThisProgramToolStripMenuItem.Name = "AboutThisProgramToolStripMenuItem";
+			this.AboutThisProgramToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+			this.AboutThisProgramToolStripMenuItem.Text = "About This Program(&A)";
+			this.AboutThisProgramToolStripMenuItem.Click += new System.EventHandler(this.AboutThisProgramToolStripMenuItem_Click);
 			// 
 			// MainForm
 			// 
@@ -271,31 +272,31 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
 			this.ClientSize = new System.Drawing.Size(511, 117);
-			this.Controls.Add(this.recheckButton);
-			this.Controls.Add(this.checkIPButton);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.gradeComboBox);
-			this.Controls.Add(this.numberComboBox);
-			this.Controls.Add(this.adapterComboBox);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.startButton);
-			this.Controls.Add(this.radioButtonsGroupBox);
-			this.Controls.Add(this.menuStrip);
+			this.Controls.Add(this.ReloadButton);
+			this.Controls.Add(this.IPButton);
+			this.Controls.Add(this.AdapterLabel);
+			this.Controls.Add(this.GradeComboBox);
+			this.Controls.Add(this.NumberComboBox);
+			this.Controls.Add(this.AdapterComboBox);
+			this.Controls.Add(this.NumberLabel);
+			this.Controls.Add(this.GradeLabel);
+			this.Controls.Add(this.SaveButton);
+			this.Controls.Add(this.RadioButtonGroupBox);
+			this.Controls.Add(this.MenuStrip);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.MainMenuStrip = this.menuStrip;
+			this.MainMenuStrip = this.MenuStrip;
 			this.Name = "MainForm";
-			this.Text = "Configuration TCP/IP";
+			this.Text = "IP Configurator";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
 			this.Load += new System.EventHandler(this.MainForm_Load);
-			this.radioButtonsGroupBox.ResumeLayout(false);
-			this.radioButtonsGroupBox.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.adapterBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.numberBindingSource)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.gradeBindingSource)).EndInit();
-			this.menuStrip.ResumeLayout(false);
-			this.menuStrip.PerformLayout();
+			this.RadioButtonGroupBox.ResumeLayout(false);
+			this.RadioButtonGroupBox.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.AdapterBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.NumberBindingSource)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.GradeBindingSource)).EndInit();
+			this.MenuStrip.ResumeLayout(false);
+			this.MenuStrip.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -303,28 +304,28 @@
 
 		#endregion
 
-		private System.Windows.Forms.RadioButton staticRadioButton;
-		private System.Windows.Forms.RadioButton dynamicRadioButton;
-		private System.Windows.Forms.GroupBox radioButtonsGroupBox;
-		private System.Windows.Forms.Button startButton;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.ComboBox adapterComboBox;
-		private System.Windows.Forms.ComboBox numberComboBox;
-		private System.Windows.Forms.BindingSource adapterBindingSource;
-		private System.Windows.Forms.ComboBox gradeComboBox;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Button checkIPButton;
-		private System.Windows.Forms.BindingSource numberBindingSource;
-		private System.Windows.Forms.BindingSource gradeBindingSource;
-		private System.Windows.Forms.Button recheckButton;
-		private System.Windows.Forms.MenuStrip menuStrip;
-		private System.Windows.Forms.ToolStripMenuItem fileFToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exitXToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem helpHToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem helpTopicsHToolStripMenuItem;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-		private System.Windows.Forms.ToolStripMenuItem aboutThisProgramAToolStripMenuItem;
+		private System.Windows.Forms.RadioButton StaticRadioButton;
+		private System.Windows.Forms.RadioButton DynamicRadioButton;
+		private System.Windows.Forms.GroupBox RadioButtonGroupBox;
+		private System.Windows.Forms.Button SaveButton;
+		private System.Windows.Forms.Label GradeLabel;
+		private System.Windows.Forms.Label NumberLabel;
+		private System.Windows.Forms.ComboBox AdapterComboBox;
+		private System.Windows.Forms.ComboBox NumberComboBox;
+		private System.Windows.Forms.BindingSource AdapterBindingSource;
+		private System.Windows.Forms.ComboBox GradeComboBox;
+		private System.Windows.Forms.Label AdapterLabel;
+		private System.Windows.Forms.Button IPButton;
+		private System.Windows.Forms.BindingSource NumberBindingSource;
+		private System.Windows.Forms.BindingSource GradeBindingSource;
+		private System.Windows.Forms.Button ReloadButton;
+		private System.Windows.Forms.MenuStrip MenuStrip;
+		private System.Windows.Forms.ToolStripMenuItem FileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem HelpToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem HelpTopicsToolStripMenuItem;
+		private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
+		private System.Windows.Forms.ToolStripMenuItem AboutThisProgramToolStripMenuItem;
 	}
 }
 

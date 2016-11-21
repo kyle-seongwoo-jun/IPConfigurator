@@ -73,16 +73,6 @@ namespace IPConfigurator.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap Icons8_Windows_8_Computer_Hardware_Restart {
-            get {
-                object obj = ResourceManager.GetObject("Icons8-Windows-8-Computer-Hardware-Restart", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap networking {
             get {
                 object obj = ResourceManager.GetObject("networking", resourceCulture);

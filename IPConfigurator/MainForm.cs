@@ -12,6 +12,11 @@ namespace IPConfigurator
 		NetworkAdapterConfigurator networkAdapterConfingurator;
 		List<NetworkAdapter> adapters;
 
+		NetworkAdapter selectedAdapter
+		{
+			get { return AdapterComboBox.SelectedItem as NetworkAdapter; }
+		}
+
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -23,70 +28,59 @@ namespace IPConfigurator
 		}
 
 		#region Event Listener
-
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			// Initialize BingingSource
-			adapterBindingSource.DataSource = adapters;
-			numberBindingSource.DataSource = Enumerable.Range(1, 80);
-			gradeBindingSource.DataSource = Enumerable.Range(1, 2);
+			AdapterBindingSource.DataSource = adapters;
+			NumberBindingSource.DataSource = Enumerable.Range(1, 80);
+			GradeBindingSource.DataSource = Enumerable.Range(1, 2);
 
 			// Initialize component's state 
-			if (adapterComboBox.SelectedItem as NetworkAdapter != null)
-			{
-				var adapter = adapterComboBox.SelectedItem as NetworkAdapter;
-
-				if (adapter.IsDynamic)
-				{
-					setEnabled(NetworkAdapterStatus.Dynamic);
-				}
-				else
-				{
-					setEnabled(NetworkAdapterStatus.Static);
-				}
-			}
-			else
-			{
-				setEnabled(NetworkAdapterStatus.None);
-			}
+			SetComponentByAdapter();
 
 			try
 			{
 				// Load	previous data
-				using (FileStream fs = File.OpenRead(@"C:\ipconfig.dat"))
+				using (FileStream fs = File.OpenRead(@"C:\ipconfig.bin"))
 				{
 					using (BinaryReader br = new BinaryReader(fs))
 					{
-						gradeComboBox.SelectedItem = br.ReadInt32();
-						numberComboBox.SelectedItem = br.ReadInt32();
+						GradeComboBox.SelectedItem = br.ReadInt32();
+						NumberComboBox.SelectedItem = br.ReadInt32();
 					}
 				}
 			}
 			catch (FileNotFoundException) { /* First run */ }
 		}
 
-		private void startButton_Click(object sender, EventArgs e)
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if (staticRadioButton.Checked)
+			using (FileStream file = File.Create(@"C:\ipconfig.bin"))
 			{
-				int grade = (int)gradeComboBox.SelectedItem;
-				int number = (int)numberComboBox.SelectedItem;
+				using (BinaryWriter writer = new BinaryWriter(file))
+				{
+					int grade = (int)GradeComboBox.SelectedItem;
+					int number = (int)NumberComboBox.SelectedItem;
 
-				var adapter = adapterComboBox.SelectedItem as NetworkAdapter;
-				adapter.ToStaticIP("10.156.145." + getIdentificationNumber(grade, number));
+					writer.Write(grade);
+					writer.Write(number);
+				}
+			}
+		}
+
+		private void SaveButton_Click(object sender, EventArgs e)
+		{
+			if (StaticRadioButton.Checked)
+			{
+				int grade = (int)GradeComboBox.SelectedItem;
+				int number = (int)NumberComboBox.SelectedItem;
+
+				selectedAdapter.ToStaticIP("10.156.145." + getIdentificationNumber(grade, number));
 				MessageBox.Show("Configured.");
 			}
-			else if (dynamicRadioButton.Checked)
+			else if (DynamicRadioButton.Checked)
 			{
-				try
-				{
-					var adapter = adapterComboBox.SelectedItem as NetworkAdapter;
-					adapter.ToDynamicIP();
-				}
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.ToString());
-				}
+				selectedAdapter.ToDynamicIP();
 				MessageBox.Show("Configured.");
 			}
 			else
@@ -95,11 +89,10 @@ namespace IPConfigurator
 			}
 		}
 
-		private void checkIPButton_Click(object sender, EventArgs e)
+		private void IPButton_Click(object sender, EventArgs e)
 		{
 			StringBuilder sb = new StringBuilder();
-			var adapter = adapterComboBox.SelectedItem as NetworkAdapter;
-			foreach (var item in adapter.IPInformation)
+			foreach (var item in selectedAdapter.IPInformation)
 			{
 				sb.AppendLine(item.Key + " : " + item.Value);
 			}
@@ -107,98 +100,73 @@ namespace IPConfigurator
 			MessageBox.Show(sb.ToString());
 		}
 
-		private void recheckButton_Click(object sender, EventArgs e)
+		private void ReloadButton_Click(object sender, EventArgs e)
 		{
-			adapterBindingSource.DataSource = networkAdapterConfingurator.NetworkAdapters;
+			AdapterBindingSource.DataSource = networkAdapterConfingurator.NetworkAdapters;
 
-			if (adapterComboBox.SelectedItem as NetworkAdapter != null)
-			{
-				var adapter = adapterComboBox.SelectedItem as NetworkAdapter;
-
-				if (adapter.IsDynamic)
-				{
-					setEnabled(NetworkAdapterStatus.Dynamic);
-				}
-				else
-				{
-					setEnabled(NetworkAdapterStatus.Static);
-				}
-			}
-			else
-			{
-				setEnabled(NetworkAdapterStatus.None);
-			}
+			SetComponentByAdapter();
 		}
 
-		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		private void AboutThisProgramToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			using (FileStream file = File.Create(@"C:\ipconfig.dat"))
-			{
-				using (BinaryWriter writer = new BinaryWriter(file))
-				{
-					int grade = (int)gradeComboBox.SelectedItem;
-					int number = (int)numberComboBox.SelectedItem;
-
-					writer.Write(grade);
-					writer.Write(number);
-				}
-			}
+			new AboutBox().ShowDialog();
 		}
 
-		private void aboutThisProgramAToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			new AboutForm().Show();
-		}
-
-		private void exitXToolStripMenuItem_Click(object sender, EventArgs e)
+		private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
 
-		private void helpTopicsHToolStripMenuItem_Click(object sender, EventArgs e)
+		private void HelpTopicsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show("1. Select Static or Dynamic.\n2. Select your grade, and laptop number.\n3. And.. Just Start!!! \n", "How to use it!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
-		private void staticRadioButton_CheckedChanged(object sender, EventArgs e)
+		private void StaticRadioButton_CheckedChanged(object sender, EventArgs e)
 		{
 			RadioButton radioButton = sender as RadioButton;
 			if (radioButton.Checked)
 			{
-				setEnabled(NetworkAdapterStatus.Static);
+				SetComponentBy(NetworkAdapterStatus.Static);
 			}
 			else
 			{
-				setEnabled(NetworkAdapterStatus.Dynamic);
+				SetComponentBy(NetworkAdapterStatus.Dynamic);
 			}
 		}
 
-		private void dynamicRadioButton_CheckedChanged(object sender, EventArgs e)
+		private void AdapterComboBox_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			RadioButton radioButton = sender as RadioButton;
-			if (radioButton.Checked)
-			{
-				setEnabled(NetworkAdapterStatus.Dynamic);
-			}
-			else
-			{
-				setEnabled(NetworkAdapterStatus.Static);
-			}
-		}
-
-		private void adapterComboBox_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
+			SetComponentByAdapter();
 		}
 
 		#endregion
 
+		private void SetComponentByAdapter()
+		{
+			if (selectedAdapter != null)
+			{
+				if (selectedAdapter.IsDynamic)
+				{
+					SetComponentBy(NetworkAdapterStatus.Dynamic);
+				}
+				else
+				{
+					SetComponentBy(NetworkAdapterStatus.Static);
+				}
+			}
+			else
+			{
+				SetComponentBy(NetworkAdapterStatus.None);
+			}
+		}
+
 		/// <summary>
-		/// 개인의 아이피 주소를 가져오는 함수
+		/// get private ip number
 		/// </summary>
-		/// <param name="grade">학년</param>
-		/// <param name="number">노트북 번호</param>
-		/// <returns>아이피 4번째 자리 (10.156.145.xxx)</returns>
+		/// <param name="grade">Grade</param>
+		/// <param name="number">Laptop Number</param>
+		/// <returns>IP 4th (10.156.145.xxx)</returns>
 		private int getIdentificationNumber(int grade, int number)
 		{
 			int id = 20;
@@ -213,40 +181,39 @@ namespace IPConfigurator
 			return id;
 		}
 
-		enum NetworkAdapterStatus
+		private enum NetworkAdapterStatus
 		{
 			Static, Dynamic, None
 		}
 
-		private void setEnabled(NetworkAdapterStatus status)
+		private void SetComponentBy(NetworkAdapterStatus status)
 		{
 			switch (status)
 			{
 				case NetworkAdapterStatus.Static:
-					staticRadioButton.Checked = true;
-					dynamicRadioButton.Checked = false;
-					radioButtonsGroupBox.Enabled = true;
-					gradeComboBox.Enabled = true;
-					numberComboBox.Enabled = true;
+					StaticRadioButton.Checked = true;
+					DynamicRadioButton.Checked = false;
+					RadioButtonGroupBox.Enabled = true;
+					GradeComboBox.Enabled = true;
+					NumberComboBox.Enabled = true;
 					break;
 
 				case NetworkAdapterStatus.Dynamic:
-					staticRadioButton.Checked = false;
-					dynamicRadioButton.Checked = true;
-					radioButtonsGroupBox.Enabled = true;
-					gradeComboBox.Enabled = false;
-					numberComboBox.Enabled = false;
+					StaticRadioButton.Checked = false;
+					DynamicRadioButton.Checked = true;
+					RadioButtonGroupBox.Enabled = true;
+					GradeComboBox.Enabled = false;
+					NumberComboBox.Enabled = false;
 					break;
 
 				case NetworkAdapterStatus.None:
-					staticRadioButton.Checked = false;
-					dynamicRadioButton.Checked = false;
-					radioButtonsGroupBox.Enabled = false;
-					gradeComboBox.Enabled = false;
-					numberComboBox.Enabled = false;
+					StaticRadioButton.Checked = false;
+					DynamicRadioButton.Checked = false;
+					RadioButtonGroupBox.Enabled = false;
+					GradeComboBox.Enabled = false;
+					NumberComboBox.Enabled = false;
 					break;
 			}
 		}
-
 	}
 }
