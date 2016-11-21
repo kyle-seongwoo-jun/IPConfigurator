@@ -1,5 +1,5 @@
-# ipconfig
-Configuring TCP/IP settings.
+# IP Configurator
+This program configurate TCP/IP settings.
 
 # Why use this program
 Becasue configuring TCP/IP settings is a bother!
