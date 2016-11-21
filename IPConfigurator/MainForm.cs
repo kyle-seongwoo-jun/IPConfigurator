@@ -25,7 +25,7 @@ namespace IPConfigurator
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			// Initialize BingingSource
-			adapterBindingSource.DataSource = networkAdapterConfingurator.NetworkAdapter;
+			adapterBindingSource.DataSource = networkAdapterConfingurator.NetworkAdapters;
 			numberBindingSource.DataSource = Enumerable.Range(1, 80);
 			gradeBindingSource.DataSource = Enumerable.Range(1, 2);
 
@@ -92,7 +92,7 @@ namespace IPConfigurator
 		private void checkIPButton_Click(object sender, EventArgs e)
 		{
 			StringBuilder sb = new StringBuilder();
-			foreach (string s in networkAdapterConfingurator.GetIP(adapterComboBox.SelectedItem as string))
+			foreach (string s in networkAdapterConfingurator.IPInformation(adapterComboBox.SelectedItem as string))
 			{
 				sb.AppendLine(s);
 			}
@@ -102,7 +102,7 @@ namespace IPConfigurator
 
 		private void recheckButton_Click(object sender, EventArgs e)
 		{
-			adapterBindingSource.DataSource = networkAdapterConfingurator.NetworkAdapter;
+			adapterBindingSource.DataSource = networkAdapterConfingurator.NetworkAdapters;
 
 			if (adapterComboBox.SelectedItem as string != null)
 			{
