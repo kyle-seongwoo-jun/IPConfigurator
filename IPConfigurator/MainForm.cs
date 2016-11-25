@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace IPConfigurator
 {
@@ -11,8 +12,10 @@ namespace IPConfigurator
 	{
 		NetworkAdapterConfigurator networkAdapterConfingurator;
 		List<NetworkAdapter> adapters;
+        string ApplicationDataFolder { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "IP Configurator"); } }
+        string ConfigurationDataFile { get { return Path.Combine(ApplicationDataFolder, "configuration.json"); } }
 
-		NetworkAdapter selectedAdapter
+        NetworkAdapter selectedAdapter
 		{
 			get { return AdapterComboBox.SelectedItem as NetworkAdapter; }
 		}
@@ -24,7 +27,7 @@ namespace IPConfigurator
 		{
 			InitializeComponent();
 			networkAdapterConfingurator = new NetworkAdapterConfigurator();
-			adapters = networkAdapterConfingurator.NetworkAdapters;
+			adapters = networkAdapterConfingurator.NetworkAdapters;            
 		}
 
 		#region Event Listener
@@ -38,35 +41,44 @@ namespace IPConfigurator
 			// Initialize component's state 
 			SetComponentByAdapter();
 
-			try
-			{
-				// Load	previous data
-				using (FileStream fs = File.OpenRead(@"C:\ipconfig.bin"))
-				{
-					using (BinaryReader br = new BinaryReader(fs))
-					{
-						GradeComboBox.SelectedItem = br.ReadInt32();
-						NumberComboBox.SelectedItem = br.ReadInt32();
-					}
-				}
-			}
-			catch (FileNotFoundException) { /* First run */ }
-		}
-
+            if (Directory.Exists(ApplicationDataFolder))
+            {
+                try
+                {
+                    // Load	previous data
+                    using (FileStream file = File.OpenRead(ConfigurationDataFile))
+                    {
+                        using (var reader = new StreamReader(file))
+                        {
+                            var json = JObject.Parse(reader.ReadToEnd());
+                            GradeComboBox.SelectedItem = (int)json["Grade"];
+                            NumberComboBox.SelectedItem = (int)json["Number"];
+                        }
+                    }
+                }
+                catch (FileNotFoundException) { /* First Run */ }
+            }
+        }
+        
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			using (FileStream file = File.Create(@"C:\ipconfig.bin"))
-			{
-				using (BinaryWriter writer = new BinaryWriter(file))
-				{
-					int grade = (int)GradeComboBox.SelectedItem;
-					int number = (int)NumberComboBox.SelectedItem;
+            if (!Directory.Exists(ApplicationDataFolder))
+            {
+                Directory.CreateDirectory(ApplicationDataFolder);
+            }
 
-					writer.Write(grade);
-					writer.Write(number);
-				}
-			}
-		}
+			using (FileStream file = File.Create(ConfigurationDataFile))
+			{
+                using (var writer = new StreamWriter(file))
+                {
+                    var json = new JObject();
+                    json["Grade"] = (int)GradeComboBox.SelectedItem;
+                    json["Number"] = (int)NumberComboBox.SelectedItem;
+
+                    writer.Write(json.ToString());
+                }
+            }
+        }
 
 		private void SaveButton_Click(object sender, EventArgs e)
 		{
@@ -75,7 +87,7 @@ namespace IPConfigurator
 				int grade = (int)GradeComboBox.SelectedItem;
 				int number = (int)NumberComboBox.SelectedItem;
 
-				selectedAdapter.ToStaticIP("10.156.145." + getIdentificationNumber(grade, number));
+				selectedAdapter.ToStaticIP("10.156.145." + GetIdentificationNumber(grade, number));
 				MessageBox.Show("Configured.");
 			}
 			else if (DynamicRadioButton.Checked)
@@ -167,7 +179,7 @@ namespace IPConfigurator
 		/// <param name="grade">Grade</param>
 		/// <param name="number">Laptop Number</param>
 		/// <returns>IP 4th (10.156.145.xxx)</returns>
-		private int getIdentificationNumber(int grade, int number)
+		private int GetIdentificationNumber(int grade, int number)
 		{
 			int id = 20;
 			
