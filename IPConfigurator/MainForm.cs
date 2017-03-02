@@ -21,7 +21,10 @@ namespace IPConfigurator
 
 		NetworkAdapter selectedAdapter
 		{
-			get { return AdapterComboBox.SelectedItem as NetworkAdapter; }
+			get
+			{
+				return AdapterComboBox.SelectedItem as NetworkAdapter;
+			}
 		}
 
 		string IPAddress
@@ -31,10 +34,10 @@ namespace IPConfigurator
 				int grade = (int)GradeComboBox.SelectedValue;
 				int class_ = (int)ClassComboBox.SelectedValue;
 				int number = (int)NumberComboBox.SelectedValue;
-
-				var builder = new StringBuilder("10.156.");
-
-				return builder.ToString();
+				
+				var keys = new[] { new[] { 0, 0, 0, 0}, new[] { 0, 0, 0, 0 }, new[] { 0, 169, 0, 0 } };
+				
+				return $"10.156.145.{keys[grade - 1][class_ - 1] + number}";
 			}
 		}
 

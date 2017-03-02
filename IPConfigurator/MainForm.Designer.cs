@@ -271,13 +271,13 @@
 			this.label1.TabIndex = 16;
 			this.label1.Text = "Class";
 			// 
-			// comboBox1
+			// ClassComboBox
 			// 
 			this.ClassComboBox.DataSource = this.ClassBindingSource;
 			this.ClassComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ClassComboBox.FormattingEnabled = true;
 			this.ClassComboBox.Location = new System.Drawing.Point(346, 60);
-			this.ClassComboBox.Name = "comboBox1";
+			this.ClassComboBox.Name = "ClassComboBox";
 			this.ClassComboBox.Size = new System.Drawing.Size(65, 20);
 			this.ClassComboBox.TabIndex = 17;
 			// 
