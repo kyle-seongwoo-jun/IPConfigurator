@@ -22,5 +22,41 @@ namespace IPConfigurator.Properties {
                 return defaultInstance;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int Grade {
+            get {
+                return ((int)(this["Grade"]));
+            }
+            set {
+                this["Grade"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int Class {
+            get {
+                return ((int)(this["Class"]));
+            }
+            set {
+                this["Class"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public int Number {
+            get {
+                return ((int)(this["Number"]));
+            }
+            set {
+                this["Number"] = value;
+            }
+        }
     }
 }

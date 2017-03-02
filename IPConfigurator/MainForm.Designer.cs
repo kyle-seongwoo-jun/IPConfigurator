@@ -52,11 +52,15 @@
 			this.HelpTopicsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.ToolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.AboutThisProgramToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.label1 = new System.Windows.Forms.Label();
+			this.ClassComboBox = new System.Windows.Forms.ComboBox();
+			this.ClassBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.RadioButtonGroupBox.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.AdapterBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NumberBindingSource)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.GradeBindingSource)).BeginInit();
 			this.MenuStrip.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ClassBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// StaticRadioButton
@@ -88,7 +92,8 @@
 			// 
 			// RadioButtonGroupBox
 			// 
-			this.RadioButtonGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.RadioButtonGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.RadioButtonGroupBox.Controls.Add(this.StaticRadioButton);
 			this.RadioButtonGroupBox.Controls.Add(this.DynamicRadioButton);
 			this.RadioButtonGroupBox.Location = new System.Drawing.Point(19, 56);
@@ -99,7 +104,8 @@
 			// 
 			// SaveButton
 			// 
-			this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.SaveButton.Location = new System.Drawing.Point(424, 86);
 			this.SaveButton.Name = "SaveButton";
 			this.SaveButton.Size = new System.Drawing.Size(75, 23);
@@ -110,7 +116,7 @@
 			// 
 			// GradeLabel
 			// 
-			this.GradeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.GradeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.GradeLabel.AutoSize = true;
 			this.GradeLabel.Location = new System.Drawing.Point(182, 67);
@@ -121,7 +127,7 @@
 			// 
 			// NumberLabel
 			// 
-			this.NumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.NumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.NumberLabel.AutoSize = true;
 			this.NumberLabel.Location = new System.Drawing.Point(182, 89);
@@ -142,13 +148,9 @@
 			this.AdapterComboBox.TabIndex = 8;
 			this.AdapterComboBox.SelectedIndexChanged += new System.EventHandler(this.AdapterComboBox_SelectedIndexChanged);
 			// 
-			// AdapterBindingSource
-			// 
-			this.AdapterBindingSource.DataSource = typeof(IPConfigurator.MainForm);
-			// 
 			// NumberComboBox
 			// 
-			this.NumberComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.NumberComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.NumberComboBox.DataSource = this.NumberBindingSource;
 			this.NumberComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -158,25 +160,17 @@
 			this.NumberComboBox.Size = new System.Drawing.Size(173, 20);
 			this.NumberComboBox.TabIndex = 9;
 			// 
-			// NumberBindingSource
-			// 
-			this.NumberBindingSource.DataSource = typeof(IPConfigurator.MainForm);
-			// 
 			// GradeComboBox
 			// 
-			this.GradeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+			this.GradeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.GradeComboBox.DataSource = this.GradeBindingSource;
 			this.GradeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.GradeComboBox.FormattingEnabled = true;
 			this.GradeComboBox.Location = new System.Drawing.Point(238, 60);
 			this.GradeComboBox.Name = "GradeComboBox";
-			this.GradeComboBox.Size = new System.Drawing.Size(173, 20);
+			this.GradeComboBox.Size = new System.Drawing.Size(58, 20);
 			this.GradeComboBox.TabIndex = 11;
-			// 
-			// GradeBindingSource
-			// 
-			this.GradeBindingSource.DataSource = typeof(IPConfigurator.MainForm);
 			// 
 			// AdapterLabel
 			// 
@@ -189,6 +183,8 @@
 			// 
 			// IPButton
 			// 
+			this.IPButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.IPButton.Location = new System.Drawing.Point(424, 58);
 			this.IPButton.Name = "IPButton";
 			this.IPButton.Size = new System.Drawing.Size(75, 23);
@@ -266,12 +262,33 @@
 			this.AboutThisProgramToolStripMenuItem.Text = "About This Program(&A)";
 			this.AboutThisProgramToolStripMenuItem.Click += new System.EventHandler(this.AboutThisProgramToolStripMenuItem_Click);
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(305, 67);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(38, 12);
+			this.label1.TabIndex = 16;
+			this.label1.Text = "Class";
+			// 
+			// comboBox1
+			// 
+			this.ClassComboBox.DataSource = this.ClassBindingSource;
+			this.ClassComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ClassComboBox.FormattingEnabled = true;
+			this.ClassComboBox.Location = new System.Drawing.Point(346, 60);
+			this.ClassComboBox.Name = "comboBox1";
+			this.ClassComboBox.Size = new System.Drawing.Size(65, 20);
+			this.ClassComboBox.TabIndex = 17;
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
-			this.ClientSize = new System.Drawing.Size(511, 117);
+			this.ClientSize = new System.Drawing.Size(511, 116);
+			this.Controls.Add(this.ClassComboBox);
+			this.Controls.Add(this.label1);
 			this.Controls.Add(this.ReloadButton);
 			this.Controls.Add(this.IPButton);
 			this.Controls.Add(this.AdapterLabel);
@@ -297,6 +314,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.GradeBindingSource)).EndInit();
 			this.MenuStrip.ResumeLayout(false);
 			this.MenuStrip.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.ClassBindingSource)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -326,6 +344,9 @@
 		private System.Windows.Forms.ToolStripMenuItem HelpTopicsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripSeparator ToolStripSeparator1;
 		private System.Windows.Forms.ToolStripMenuItem AboutThisProgramToolStripMenuItem;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.ComboBox ClassComboBox;
+		private System.Windows.Forms.BindingSource ClassBindingSource;
 	}
 }
 

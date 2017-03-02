@@ -1,84 +1,88 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows.Forms;
-using System.IO;
 using System.Linq;
-using Newtonsoft.Json.Linq;
+using System.Windows.Forms;
+
+using IPConfigurator.Properties;
 
 namespace IPConfigurator
 {
 	public partial class MainForm : Form
 	{
+		#region Fields
+
 		NetworkAdapterConfigurator networkAdapterConfingurator;
 		List<NetworkAdapter> adapters;
-        string ApplicationDataFolder { get { return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "IP Configurator"); } }
-        string ConfigurationDataFile { get { return Path.Combine(ApplicationDataFolder, "configuration.json"); } }
 
-        NetworkAdapter selectedAdapter
+		#endregion
+
+		#region Properties
+
+		NetworkAdapter selectedAdapter
 		{
 			get { return AdapterComboBox.SelectedItem as NetworkAdapter; }
 		}
 
-		/// <summary>
-		/// Constructor
-		/// </summary>
+		string IPAddress
+		{
+			get
+			{
+				int grade = (int)GradeComboBox.SelectedValue;
+				int class_ = (int)ClassComboBox.SelectedValue;
+				int number = (int)NumberComboBox.SelectedValue;
+
+				var builder = new StringBuilder("10.156.");
+
+				return builder.ToString();
+			}
+		}
+
+		Settings Setting
+		{
+			get
+			{
+				return Settings.Default;
+			}
+		}
+
+		#endregion
+
+		#region Constructor
+
 		public MainForm()
 		{
 			InitializeComponent();
 			networkAdapterConfingurator = new NetworkAdapterConfigurator();
-			adapters = networkAdapterConfingurator.NetworkAdapters;            
+			adapters = networkAdapterConfingurator.NetworkAdapters;
 		}
 
-		#region Event Listener
+		#endregion
+
+		#region Event Listeners
 		private void MainForm_Load(object sender, EventArgs e)
 		{
 			// Initialize BingingSource
 			AdapterBindingSource.DataSource = adapters;
-			NumberBindingSource.DataSource = Enumerable.Range(1, 80);
-			GradeBindingSource.DataSource = Enumerable.Range(1, 2);
+			GradeBindingSource.DataSource = Enumerable.Range(1, 3);
+			ClassBindingSource.DataSource = Enumerable.Range(1, 4);
+			NumberBindingSource.DataSource = Enumerable.Range(1, 20);
 
 			// Initialize component's state 
 			SetComponentByAdapter();
 
-            if (Directory.Exists(ApplicationDataFolder))
-            {
-                try
-                {
-                    // Load	previous data
-                    using (FileStream file = File.OpenRead(ConfigurationDataFile))
-                    {
-                        using (var reader = new StreamReader(file))
-                        {
-                            var json = JObject.Parse(reader.ReadToEnd());
-                            GradeComboBox.SelectedItem = (int)json["Grade"];
-                            NumberComboBox.SelectedItem = (int)json["Number"];
-                        }
-                    }
-                }
-                catch (FileNotFoundException) { /* First Run */ }
-            }
-        }
-        
+			GradeComboBox.SelectedItem = Setting.Grade;
+			ClassComboBox.SelectedItem = Setting.Class;
+			NumberComboBox.SelectedItem = Setting.Number;
+		}
+
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
 		{
-            if (!Directory.Exists(ApplicationDataFolder))
-            {
-                Directory.CreateDirectory(ApplicationDataFolder);
-            }
-
-			using (FileStream file = File.Create(ConfigurationDataFile))
-			{
-                using (var writer = new StreamWriter(file))
-                {
-                    var json = new JObject();
-                    json["Grade"] = (int)GradeComboBox.SelectedItem;
-                    json["Number"] = (int)NumberComboBox.SelectedItem;
-
-                    writer.Write(json.ToString());
-                }
-            }
-        }
+			Setting.Grade = (int)GradeComboBox.SelectedItem;
+			Setting.Class = (int)ClassComboBox.SelectedItem;
+			Setting.Number = (int)NumberComboBox.SelectedItem;
+			Setting.Save();
+		}
 
 		private void SaveButton_Click(object sender, EventArgs e)
 		{
@@ -87,7 +91,7 @@ namespace IPConfigurator
 				int grade = (int)GradeComboBox.SelectedItem;
 				int number = (int)NumberComboBox.SelectedItem;
 
-				selectedAdapter.ToStaticIP("10.156.145." + GetIdentificationNumber(grade, number));
+				selectedAdapter.ToStaticIP(IPAddress);
 				MessageBox.Show("Configured.");
 			}
 			else if (DynamicRadioButton.Checked)
@@ -154,6 +158,8 @@ namespace IPConfigurator
 
 		#endregion
 
+		#region Methods
+
 		private void SetComponentByAdapter()
 		{
 			if (selectedAdapter != null)
@@ -173,26 +179,6 @@ namespace IPConfigurator
 			}
 		}
 
-		/// <summary>
-		/// get private ip number
-		/// </summary>
-		/// <param name="grade">Grade</param>
-		/// <param name="number">Laptop Number</param>
-		/// <returns>IP 4th (10.156.145.xxx)</returns>
-		private int GetIdentificationNumber(int grade, int number)
-		{
-			int id = 20;
-			
-			if(grade == 1)
-			{
-				id += 80;
-			}
-
-			id += number;
-
-			return id;
-		}
-
 		private enum NetworkAdapterStatus
 		{
 			Static, Dynamic, None
@@ -207,6 +193,7 @@ namespace IPConfigurator
 					DynamicRadioButton.Checked = false;
 					RadioButtonGroupBox.Enabled = true;
 					GradeComboBox.Enabled = true;
+					ClassComboBox.Enabled = true;
 					NumberComboBox.Enabled = true;
 					break;
 
@@ -215,6 +202,7 @@ namespace IPConfigurator
 					DynamicRadioButton.Checked = true;
 					RadioButtonGroupBox.Enabled = true;
 					GradeComboBox.Enabled = false;
+					ClassComboBox.Enabled = false;
 					NumberComboBox.Enabled = false;
 					break;
 
@@ -223,9 +211,12 @@ namespace IPConfigurator
 					DynamicRadioButton.Checked = false;
 					RadioButtonGroupBox.Enabled = false;
 					GradeComboBox.Enabled = false;
+					ClassComboBox.Enabled = false;
 					NumberComboBox.Enabled = false;
 					break;
 			}
 		}
+
+		#endregion
 	}
 }
