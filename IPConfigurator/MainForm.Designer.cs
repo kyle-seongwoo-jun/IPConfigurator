@@ -72,7 +72,7 @@
 			this.StaticRadioButton.Location = new System.Drawing.Point(6, 20);
 			this.StaticRadioButton.Name = "StaticRadioButton";
 			this.StaticRadioButton.Size = new System.Drawing.Size(54, 16);
-			this.StaticRadioButton.TabIndex = 0;
+			this.StaticRadioButton.TabIndex = 3;
 			this.StaticRadioButton.TabStop = true;
 			this.StaticRadioButton.Text = "Static";
 			this.StaticRadioButton.UseVisualStyleBackColor = true;
@@ -86,7 +86,7 @@
 			this.DynamicRadioButton.Location = new System.Drawing.Point(72, 20);
 			this.DynamicRadioButton.Name = "DynamicRadioButton";
 			this.DynamicRadioButton.Size = new System.Drawing.Size(73, 16);
-			this.DynamicRadioButton.TabIndex = 1;
+			this.DynamicRadioButton.TabIndex = 4;
 			this.DynamicRadioButton.Text = "Dynamic";
 			this.DynamicRadioButton.UseVisualStyleBackColor = true;
 			// 
@@ -109,7 +109,7 @@
 			this.SaveButton.Location = new System.Drawing.Point(424, 86);
 			this.SaveButton.Name = "SaveButton";
 			this.SaveButton.Size = new System.Drawing.Size(75, 23);
-			this.SaveButton.TabIndex = 3;
+			this.SaveButton.TabIndex = 9;
 			this.SaveButton.Text = "Save";
 			this.SaveButton.UseVisualStyleBackColor = true;
 			this.SaveButton.Click += new System.EventHandler(this.SaveButton_Click);
@@ -145,7 +145,7 @@
 			this.AdapterComboBox.Location = new System.Drawing.Point(73, 33);
 			this.AdapterComboBox.Name = "AdapterComboBox";
 			this.AdapterComboBox.Size = new System.Drawing.Size(398, 20);
-			this.AdapterComboBox.TabIndex = 8;
+			this.AdapterComboBox.TabIndex = 1;
 			this.AdapterComboBox.SelectedIndexChanged += new System.EventHandler(this.AdapterComboBox_SelectedIndexChanged);
 			// 
 			// NumberComboBox
@@ -158,7 +158,7 @@
 			this.NumberComboBox.Location = new System.Drawing.Point(238, 86);
 			this.NumberComboBox.Name = "NumberComboBox";
 			this.NumberComboBox.Size = new System.Drawing.Size(173, 20);
-			this.NumberComboBox.TabIndex = 9;
+			this.NumberComboBox.TabIndex = 7;
 			// 
 			// GradeComboBox
 			// 
@@ -170,7 +170,8 @@
 			this.GradeComboBox.Location = new System.Drawing.Point(238, 60);
 			this.GradeComboBox.Name = "GradeComboBox";
 			this.GradeComboBox.Size = new System.Drawing.Size(64, 20);
-			this.GradeComboBox.TabIndex = 11;
+			this.GradeComboBox.TabIndex = 5;
+			this.GradeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
 			// 
 			// AdapterLabel
 			// 
@@ -188,7 +189,7 @@
 			this.IPButton.Location = new System.Drawing.Point(424, 58);
 			this.IPButton.Name = "IPButton";
 			this.IPButton.Size = new System.Drawing.Size(75, 23);
-			this.IPButton.TabIndex = 13;
+			this.IPButton.TabIndex = 8;
 			this.IPButton.Text = "IP";
 			this.IPButton.UseVisualStyleBackColor = true;
 			this.IPButton.Click += new System.EventHandler(this.IPButton_Click);
@@ -201,7 +202,7 @@
 			this.ReloadButton.Location = new System.Drawing.Point(477, 31);
 			this.ReloadButton.Name = "ReloadButton";
 			this.ReloadButton.Size = new System.Drawing.Size(23, 23);
-			this.ReloadButton.TabIndex = 14;
+			this.ReloadButton.TabIndex = 2;
 			this.ReloadButton.UseVisualStyleBackColor = true;
 			this.ReloadButton.Click += new System.EventHandler(this.ReloadButton_Click);
 			// 
@@ -229,7 +230,7 @@
 			// 
 			this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
 			this.ExitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+			this.ExitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.ExitToolStripMenuItem.Text = "Exit(&X)";
 			this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
 			// 
@@ -279,7 +280,8 @@
 			this.ClassComboBox.Location = new System.Drawing.Point(349, 60);
 			this.ClassComboBox.Name = "ClassComboBox";
 			this.ClassComboBox.Size = new System.Drawing.Size(62, 20);
-			this.ClassComboBox.TabIndex = 17;
+			this.ClassComboBox.TabIndex = 6;
+			this.ClassComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
 			// 
 			// MainForm
 			// 

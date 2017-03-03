@@ -73,6 +73,12 @@ namespace IPConfigurator
 			InitializeComponent();
 			networkAdapterConfingurator = new NetworkAdapterConfigurator();
 			adapters = networkAdapterConfingurator.NetworkAdapters;
+			
+			// Initialize BingingSource
+			AdapterBindingSource.DataSource = adapters;
+			GradeBindingSource.DataSource = Enumerable.Range(1, 3);
+			ClassBindingSource.DataSource = Enumerable.Range(1, 4);
+			NumberBindingSource.DataSource = Enumerable.Range(1, 20);
 		}
 
 		#endregion
@@ -80,18 +86,17 @@ namespace IPConfigurator
 		#region Event Listeners
 		private void MainForm_Load(object sender, EventArgs e)
 		{
-			// Initialize BingingSource
-			AdapterBindingSource.DataSource = adapters;
-			GradeBindingSource.DataSource = Enumerable.Range(1, 3);
-			ClassBindingSource.DataSource = Enumerable.Range(1, 4);
-			NumberBindingSource.DataSource = Enumerable.Range(1, 20);
-
 			// Initialize component's state 
 			SetComponentByAdapter();
 
 			GradeComboBox.SelectedItem = Setting.Grade;
 			ClassComboBox.SelectedItem = Setting.Class;
 			NumberComboBox.SelectedItem = Setting.Number;
+
+			if(Setting.Grade == 1 && Setting.Class == 1)
+			{
+				NumberBindingSource.DataSource = Enumerable.Range(1, 21);
+			}
 		}
 
 		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -236,5 +241,23 @@ namespace IPConfigurator
 		}
 
 		#endregion
+
+		private void ComboBox_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (GradeComboBox.SelectedValue != null && ClassComboBox.SelectedValue != null)
+			{
+				int grade = (int)GradeComboBox.SelectedValue;
+				int class_ = (int)ClassComboBox.SelectedValue;
+
+				if (grade == 1 && class_ == 1)
+				{
+					NumberBindingSource.DataSource = Enumerable.Range(1, 21);
+				}
+				else
+				{
+					NumberBindingSource.DataSource = Enumerable.Range(1, 20);
+				}
+			}
+		}
 	}
 }
