@@ -169,7 +169,7 @@
 			this.GradeComboBox.FormattingEnabled = true;
 			this.GradeComboBox.Location = new System.Drawing.Point(238, 60);
 			this.GradeComboBox.Name = "GradeComboBox";
-			this.GradeComboBox.Size = new System.Drawing.Size(58, 20);
+			this.GradeComboBox.Size = new System.Drawing.Size(64, 20);
 			this.GradeComboBox.TabIndex = 11;
 			// 
 			// AdapterLabel
@@ -265,7 +265,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(305, 67);
+			this.label1.Location = new System.Drawing.Point(308, 66);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(38, 12);
 			this.label1.TabIndex = 16;
@@ -276,9 +276,9 @@
 			this.ClassComboBox.DataSource = this.ClassBindingSource;
 			this.ClassComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ClassComboBox.FormattingEnabled = true;
-			this.ClassComboBox.Location = new System.Drawing.Point(346, 60);
+			this.ClassComboBox.Location = new System.Drawing.Point(349, 60);
 			this.ClassComboBox.Name = "ClassComboBox";
-			this.ClassComboBox.Size = new System.Drawing.Size(65, 20);
+			this.ClassComboBox.Size = new System.Drawing.Size(62, 20);
 			this.ClassComboBox.TabIndex = 17;
 			// 
 			// MainForm

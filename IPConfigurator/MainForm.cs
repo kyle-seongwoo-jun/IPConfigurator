@@ -19,7 +19,7 @@ namespace IPConfigurator
 
 		#region Properties
 
-		NetworkAdapter selectedAdapter
+		NetworkAdapter SelectedAdapter
 		{
 			get
 			{
@@ -34,10 +34,25 @@ namespace IPConfigurator
 				int grade = (int)GradeComboBox.SelectedValue;
 				int class_ = (int)ClassComboBox.SelectedValue;
 				int number = (int)NumberComboBox.SelectedValue;
-				
-				var keys = new[] { new[] { 0, 0, 0, 0}, new[] { 0, 0, 0, 0 }, new[] { 0, 169, 0, 0 } };
-				
-				return $"10.156.145.{keys[grade - 1][class_ - 1] + number}";
+
+				// TODO: 내일 종현쌤한테 물어보기
+				var third = new[] { new[] { 147, 147, 147, 147 }, new[] { 145, 145, 146, 146 }, new[] { 145, 145, 146, 146 } };
+				var fourth = new[] { new[] { 100, 121, 141, 161 }, new[] { 100, 120, 100, 140 }, new[] { 150, 169, 120, 160 } };
+
+				return $"10.156.{third[grade - 1][class_ - 1]}.{fourth[grade - 1][class_ - 1] + number}";
+			}
+		}
+
+		string GateWay
+		{
+			get
+			{
+				int grade = (int)GradeComboBox.SelectedValue;
+				int class_ = (int)ClassComboBox.SelectedValue;
+
+				var third = new[] { new[] { 147, 147, 147, 147 }, new[] { 145, 145, 146, 146 }, new[] { 145, 145, 146, 146 } };
+
+				return $"10.156.{third[grade - 1][class_ - 1]}.1";
 			}
 		}
 
@@ -94,12 +109,12 @@ namespace IPConfigurator
 				int grade = (int)GradeComboBox.SelectedItem;
 				int number = (int)NumberComboBox.SelectedItem;
 
-				selectedAdapter.ToStaticIP(IPAddress);
+				SelectedAdapter.ToStaticIP(IPAddress, gateway: GateWay);
 				MessageBox.Show("Configured.");
 			}
 			else if (DynamicRadioButton.Checked)
 			{
-				selectedAdapter.ToDynamicIP();
+				SelectedAdapter.ToDynamicIP();
 				MessageBox.Show("Configured.");
 			}
 			else
@@ -111,7 +126,7 @@ namespace IPConfigurator
 		private void IPButton_Click(object sender, EventArgs e)
 		{
 			StringBuilder sb = new StringBuilder();
-			foreach (var item in selectedAdapter.IPInformation)
+			foreach (var item in SelectedAdapter.IPInformation)
 			{
 				sb.AppendLine(item.Key + " : " + item.Value);
 			}
@@ -165,9 +180,9 @@ namespace IPConfigurator
 
 		private void SetComponentByAdapter()
 		{
-			if (selectedAdapter != null)
+			if (SelectedAdapter != null)
 			{
-				if (selectedAdapter.IsDynamic)
+				if (SelectedAdapter.IsDynamic)
 				{
 					SetComponentBy(NetworkAdapterStatus.Dynamic);
 				}
