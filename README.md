@@ -1,9 +1,11 @@
 # IP Configurator
-This program configurate TCP/IP settings.
+This program is a program to help you set your IP address.
 
-# Why use this program
-Becasue configuring TCP/IP settings is a bother!
+# How to use
+1. Select your Wi-Fi Adapter.
+2. Choose dynamic or static.
+3. Input your grade, class, and number.
+4. Click sava button and enjoy your internet!
 
-# But..
-This Program can be used by DSM student.
-Someday, I will change it can be used by everyone.
+# Screenshot
+![Screenshot](Screenshot.PNG)
