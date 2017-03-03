@@ -158,7 +158,7 @@ namespace IPConfigurator
 
 		private void HelpTopicsToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			MessageBox.Show("1. Select Static or Dynamic.\n2. Select your grade, and laptop number.\n3. And.. Just Start!!! \n", "How to use it!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+			MessageBox.Show("1. Select your Wi-Fi Adapter.\n2. Choose dynamic or static.\n3. Input your grade, class, and number.\n4. Click save button and enjoy your internet!", "How to use", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 
 		private void StaticRadioButton_CheckedChanged(object sender, EventArgs e)

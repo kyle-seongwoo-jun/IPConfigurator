@@ -67,9 +67,7 @@
   <PropertyGroup>
     <ApplicationIcon>networking.ico</ApplicationIcon>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
   <PropertyGroup>
     <ManifestCertificateThumbprint>E2B155A9B67E20C26139643AD2D3E05B49FB3A08</ManifestCertificateThumbprint>
   </PropertyGroup>
@@ -82,6 +80,9 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -173,10 +174,10 @@
     <None Include="Resources\0000205_categories-site-map_300.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="networking.ico" />
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
+    <Content Include="networking.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
