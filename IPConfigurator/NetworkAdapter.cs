@@ -61,10 +61,10 @@ namespace IPConfigurator
 				{
 					if (Name.Equals(adapter["Description"]))
 					{
-                        var ip = (adapter["IPAddress"] as string[]);
-                        var subnetMask = (adapter["IPSubnet"] as string[]);
-                        var gateway = (adapter["DefaultIPGateway"] as string[]);
-                        var dns = (adapter["DNSServerSearchOrder"] as string[]);
+                        var ip = (adapter["IPAddress"] as string[]) ?? new[] { "" };
+                        var subnetMask = (adapter["IPSubnet"] as string[]) ?? new[] { "" };
+                        var gateway = (adapter["DefaultIPGateway"] as string[]) ?? new[] { "" };
+                        var dns = (adapter["DNSServerSearchOrder"] as string[]) ?? new[] { "" };
 
                         dic.Add("IP Address", string.Join(", ", ip));
                         dic.Add("Subnet Mask", string.Join(", ", subnetMask));
@@ -79,10 +79,8 @@ namespace IPConfigurator
 			}
 		}
 
-		public void ToStaticIP(string ipAddress, string subnetMask = "255.255.255.0", string gateway = "10.156.145.1", string[] DNS = null)
+		public void ToStaticIP(string ipAddress, string subnetMask, string gateway, string[] DNS)
 		{
-			DNS = DNS ?? new string[] { "210.111.226.7", "210.111.226.8" }; // Default value
-
 			foreach (ManagementObject adapter in WMI.GetInstances())
 			{
 				if (Name.Equals(adapter["Description"]))
@@ -117,11 +115,16 @@ namespace IPConfigurator
 			{
 				if (Name.Equals(adapter["Description"]))
 				{
-					ManagementBaseObject nullDNS = adapter.GetMethodParameters("SetDNSServerSearchOrder");
+                    ManagementBaseObject newGateway = adapter.GetMethodParameters("SetGateways");
+                    newGateway["DefaultIPGateway"] = null;
+                    newGateway["GatewayCostMetric"] = new int[] { 0 };
+
+                    ManagementBaseObject nullDNS = adapter.GetMethodParameters("SetDNSServerSearchOrder");
 					nullDNS["DNSServerSearchOrder"] = null;
 
 					adapter.InvokeMethod("EnableDHCP", null);
-					adapter.InvokeMethod("SetDNSServerSearchOrder", nullDNS, null);
+                    adapter.InvokeMethod("SetGateways", newGateway, null);
+                    adapter.InvokeMethod("SetDNSServerSearchOrder", nullDNS, null);
 				}
 			}
 		}

@@ -177,6 +177,15 @@ namespace IPConfigurator
         #region Event Listeners
         private void MainForm_Load(object sender, EventArgs e)
         {
+            var updateInfo = GetUpdateInformation();
+            if (updateInfo.NeedToUpdate)
+            {
+                if (MessageBox.Show("Update Available", "Do you want to download?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                {
+                    Process.Start(updateInfo.UpdateUrl);
+                }
+            }
+
             // Initialize component's state 
             SetComponentByAdapter();
 
@@ -205,7 +214,7 @@ namespace IPConfigurator
                 int grade = (int)GradeComboBox.SelectedItem;
                 int number = (int)NumberComboBox.SelectedItem;
 
-                SelectedAdapter.ToStaticIP(IPAddress, gateway: GateWay);
+                SelectedAdapter.ToStaticIP(IPAddress, "255.255.255.0", GateWay, new string[] { "210.111.226.7", "210.111.226.8" });
                 MessageBox.Show("Configured.");
             }
             else if (DynamicRadioButton.Checked)
@@ -224,7 +233,7 @@ namespace IPConfigurator
             StringBuilder sb = new StringBuilder();
             foreach (var item in SelectedAdapter.IPInformation)
             {
-                sb.AppendLine(item.Key + " : " + item.Value ?? "");
+                sb.AppendLine(item.Key + " : " + item.Value);
             }
 
             MessageBox.Show(sb.ToString());
@@ -284,18 +293,6 @@ namespace IPConfigurator
                 else
                 {
                     NumberBindingSource.DataSource = Enumerable.Range(1, 20);
-                }
-            }
-        }
-
-        private void MainForm_Shown(object sender, EventArgs e)
-        {
-            var updateInfo = GetUpdateInformation();
-            if (updateInfo.NeedToUpdate)
-            {
-                if (MessageBox.Show("Update Available", "Do you want to download?", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                {
-                    Process.Start(updateInfo.UpdateUrl);
                 }
             }
         }

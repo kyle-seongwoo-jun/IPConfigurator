@@ -309,7 +309,6 @@
             this.Text = "IP Configurator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.Shown += new System.EventHandler(this.MainForm_Shown);
             this.RadioButtonGroupBox.ResumeLayout(false);
             this.RadioButtonGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AdapterBindingSource)).EndInit();
