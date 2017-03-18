@@ -224,7 +224,7 @@ namespace IPConfigurator
             StringBuilder sb = new StringBuilder();
             foreach (var item in SelectedAdapter.IPInformation)
             {
-                sb.AppendLine(item.Key + " : " + item.Value);
+                sb.AppendLine(item.Key + " : " + item.Value ?? "");
             }
 
             MessageBox.Show(sb.ToString());

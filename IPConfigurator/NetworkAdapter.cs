@@ -61,22 +61,17 @@ namespace IPConfigurator
 				{
 					if (Name.Equals(adapter["Description"]))
 					{
-						string ip = (adapter["IPAddress"] as string[])[0];
-						string subnetMask = (adapter["IPSubnet"] as string[])[0];
-						string gateway = (adapter["DefaultIPGateway"] as string[])[0];
-						string[] dns = (adapter["DNSServerSearchOrder"] as string[]);
+                        var ip = (adapter["IPAddress"] as string[]);
+                        var subnetMask = (adapter["IPSubnet"] as string[]);
+                        var gateway = (adapter["DefaultIPGateway"] as string[]);
+                        var dns = (adapter["DNSServerSearchOrder"] as string[]);
 
-						dic.Add("IP Address", ip);
-						dic.Add("Subnet Mask", subnetMask);
-						dic.Add("Gateway", gateway);
-						dic.Add("DNS Server", dns[0]);
-
-						if (dns.Length > 1)
-						{
-							dic["DNS Server"] += $", {dns[1]}";
-						}
-
-						return dic;
+                        dic.Add("IP Address", string.Join(", ", ip));
+                        dic.Add("Subnet Mask", string.Join(", ", subnetMask));
+                        dic.Add("Gateway", string.Join(", ", gateway));
+                        dic.Add("DNS Server", string.Join(", ", dns));
+                        
+                        return dic;
 					}
 				}
 
