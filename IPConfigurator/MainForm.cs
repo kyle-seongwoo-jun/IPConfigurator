@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Windows.Forms;
-
-using IPConfigurator.Properties;
-using System.Net;
-using Newtonsoft.Json.Linq;
 using System.Reflection;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Net;
+
+using Newtonsoft.Json.Linq;
+
+using IPConfigurator.Properties;
 
 namespace IPConfigurator
 {
@@ -115,6 +117,32 @@ namespace IPConfigurator
             return new UpdateInformation { NeedToUpdate = isOld, UpdateUrl = updateUrl };
         }
 
+        private async Task<UpdateInformation> GetUpdateInformationAsync()
+        {
+            bool isOld = false;
+            string updateUrl = null;
+
+            try
+            {
+                using (var client = new WebClient())
+                {
+                    client.Headers.Add(HttpRequestHeader.UserAgent, "IP Configurator");
+
+                    var json = JObject.Parse(await client.DownloadStringTaskAsync("https://api.github.com/repos/Nuwanda22/IPConfigurator/releases/latest"));
+                    var tag = json["tag_name"].Value<string>();
+                    var lastedVersion = new Version(tag.Substring(1));
+
+                    var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
+
+                    isOld = currentVersion < lastedVersion;
+                    updateUrl = json["assets"][0]["browser_download_url"].Value<string>();
+                }
+            }
+            catch { }
+
+            return new UpdateInformation { NeedToUpdate = isOld, UpdateUrl = updateUrl };
+        }
+
         private void SetComponentByAdapter()
 		{
 			if (SelectedAdapter != null)
@@ -177,18 +205,23 @@ namespace IPConfigurator
         #region Event Listeners
         private void MainForm_Load(object sender, EventArgs e)
         {
-            var updateInfo = GetUpdateInformation();
-            if (updateInfo.NeedToUpdate)
+            // Check update available
+            GetUpdateInformationAsync().ContinueWith((x) =>
             {
-                if (MessageBox.Show("Update Available", "Do you want to download?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                var updateInfo = x.Result;
+                if (updateInfo.NeedToUpdate)
                 {
-                    Process.Start(updateInfo.UpdateUrl);
+                    if (MessageBox.Show("Update Available", "Do you want to download?", MessageBoxButtons.OKCancel) == DialogResult.OK)
+                    {
+                        Process.Start(updateInfo.UpdateUrl);
+                    }
                 }
-            }
+            });
 
             // Initialize component's state 
             SetComponentByAdapter();
 
+            // Load data from setting
             GradeComboBox.SelectedItem = Setting.Grade;
             ClassComboBox.SelectedItem = Setting.Class;
             NumberComboBox.SelectedItem = Setting.Number;
