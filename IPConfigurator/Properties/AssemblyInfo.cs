@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("IP Configurator")]
 [assembly: AssemblyDescription("This program is IP configurator. Find more info in https://github.com/Nuwanda22/IPConfigurator")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Nuwanda22")]
+[assembly: AssemblyCompany("Nuwanda")]
 [assembly: AssemblyProduct("IP Configurator")]
-[assembly: AssemblyCopyright("Copyright © 2016 Nuwanda22. All right reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2017 Nuwanda. All right reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

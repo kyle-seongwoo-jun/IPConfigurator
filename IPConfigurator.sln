@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IPConfigurator", "IPConfigurator\IPConfigurator.csproj", "{5839A4EF-F66E-44F1-B607-232F379F01AD}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{2D845607-4A0F-411A-BEDB-9483BBA568F3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,8 @@ Global
 		{5839A4EF-F66E-44F1-B607-232F379F01AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5839A4EF-F66E-44F1-B607-232F379F01AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5839A4EF-F66E-44F1-B607-232F379F01AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D845607-4A0F-411A-BEDB-9483BBA568F3}.Debug|Any CPU.ActiveCfg = Debug
+		{2D845607-4A0F-411A-BEDB-9483BBA568F3}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

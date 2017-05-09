@@ -69,9 +69,10 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.StaticRadioButton.AutoSize = true;
             this.StaticRadioButton.Checked = true;
-            this.StaticRadioButton.Location = new System.Drawing.Point(6, 20);
+            this.StaticRadioButton.Location = new System.Drawing.Point(12, 48);
+            this.StaticRadioButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.StaticRadioButton.Name = "StaticRadioButton";
-            this.StaticRadioButton.Size = new System.Drawing.Size(54, 16);
+            this.StaticRadioButton.Size = new System.Drawing.Size(103, 33);
             this.StaticRadioButton.TabIndex = 3;
             this.StaticRadioButton.TabStop = true;
             this.StaticRadioButton.Text = "Static";
@@ -83,9 +84,10 @@
             this.DynamicRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DynamicRadioButton.AutoSize = true;
-            this.DynamicRadioButton.Location = new System.Drawing.Point(72, 20);
+            this.DynamicRadioButton.Location = new System.Drawing.Point(154, 48);
+            this.DynamicRadioButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.DynamicRadioButton.Name = "DynamicRadioButton";
-            this.DynamicRadioButton.Size = new System.Drawing.Size(73, 16);
+            this.DynamicRadioButton.Size = new System.Drawing.Size(136, 33);
             this.DynamicRadioButton.TabIndex = 4;
             this.DynamicRadioButton.Text = "Dynamic";
             this.DynamicRadioButton.UseVisualStyleBackColor = true;
@@ -96,9 +98,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RadioButtonGroupBox.Controls.Add(this.StaticRadioButton);
             this.RadioButtonGroupBox.Controls.Add(this.DynamicRadioButton);
-            this.RadioButtonGroupBox.Location = new System.Drawing.Point(19, 56);
+            this.RadioButtonGroupBox.Location = new System.Drawing.Point(38, 135);
+            this.RadioButtonGroupBox.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.RadioButtonGroupBox.Name = "RadioButtonGroupBox";
-            this.RadioButtonGroupBox.Size = new System.Drawing.Size(151, 47);
+            this.RadioButtonGroupBox.Padding = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.RadioButtonGroupBox.Size = new System.Drawing.Size(302, 114);
             this.RadioButtonGroupBox.TabIndex = 2;
             this.RadioButtonGroupBox.TabStop = false;
             // 
@@ -106,9 +110,10 @@
             // 
             this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SaveButton.Location = new System.Drawing.Point(424, 86);
+            this.SaveButton.Location = new System.Drawing.Point(848, 208);
+            this.SaveButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(75, 23);
+            this.SaveButton.Size = new System.Drawing.Size(150, 56);
             this.SaveButton.TabIndex = 9;
             this.SaveButton.Text = "Save";
             this.SaveButton.UseVisualStyleBackColor = true;
@@ -119,9 +124,10 @@
             this.GradeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.GradeLabel.AutoSize = true;
-            this.GradeLabel.Location = new System.Drawing.Point(182, 67);
+            this.GradeLabel.Location = new System.Drawing.Point(364, 162);
+            this.GradeLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.GradeLabel.Name = "GradeLabel";
-            this.GradeLabel.Size = new System.Drawing.Size(39, 12);
+            this.GradeLabel.Size = new System.Drawing.Size(80, 29);
             this.GradeLabel.TabIndex = 6;
             this.GradeLabel.Text = "Grade";
             // 
@@ -130,9 +136,10 @@
             this.NumberLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.NumberLabel.AutoSize = true;
-            this.NumberLabel.Location = new System.Drawing.Point(182, 89);
+            this.NumberLabel.Location = new System.Drawing.Point(364, 215);
+            this.NumberLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.NumberLabel.Name = "NumberLabel";
-            this.NumberLabel.Size = new System.Drawing.Size(50, 12);
+            this.NumberLabel.Size = new System.Drawing.Size(100, 29);
             this.NumberLabel.TabIndex = 7;
             this.NumberLabel.Text = "Number";
             // 
@@ -142,9 +149,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.AdapterComboBox.DataSource = this.AdapterBindingSource;
             this.AdapterComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AdapterComboBox.Location = new System.Drawing.Point(73, 33);
+            this.AdapterComboBox.Location = new System.Drawing.Point(146, 80);
+            this.AdapterComboBox.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.AdapterComboBox.Name = "AdapterComboBox";
-            this.AdapterComboBox.Size = new System.Drawing.Size(398, 20);
+            this.AdapterComboBox.Size = new System.Drawing.Size(792, 37);
             this.AdapterComboBox.TabIndex = 1;
             this.AdapterComboBox.SelectedIndexChanged += new System.EventHandler(this.AdapterComboBox_SelectedIndexChanged);
             // 
@@ -155,9 +163,10 @@
             this.NumberComboBox.DataSource = this.NumberBindingSource;
             this.NumberComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.NumberComboBox.FormattingEnabled = true;
-            this.NumberComboBox.Location = new System.Drawing.Point(238, 86);
+            this.NumberComboBox.Location = new System.Drawing.Point(476, 208);
+            this.NumberComboBox.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.NumberComboBox.Name = "NumberComboBox";
-            this.NumberComboBox.Size = new System.Drawing.Size(173, 20);
+            this.NumberComboBox.Size = new System.Drawing.Size(342, 37);
             this.NumberComboBox.TabIndex = 7;
             // 
             // GradeComboBox
@@ -167,18 +176,20 @@
             this.GradeComboBox.DataSource = this.GradeBindingSource;
             this.GradeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GradeComboBox.FormattingEnabled = true;
-            this.GradeComboBox.Location = new System.Drawing.Point(238, 60);
+            this.GradeComboBox.Location = new System.Drawing.Point(476, 145);
+            this.GradeComboBox.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.GradeComboBox.Name = "GradeComboBox";
-            this.GradeComboBox.Size = new System.Drawing.Size(64, 20);
+            this.GradeComboBox.Size = new System.Drawing.Size(124, 37);
             this.GradeComboBox.TabIndex = 5;
             this.GradeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
             // AdapterLabel
             // 
             this.AdapterLabel.AutoSize = true;
-            this.AdapterLabel.Location = new System.Drawing.Point(18, 36);
+            this.AdapterLabel.Location = new System.Drawing.Point(36, 87);
+            this.AdapterLabel.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.AdapterLabel.Name = "AdapterLabel";
-            this.AdapterLabel.Size = new System.Drawing.Size(48, 12);
+            this.AdapterLabel.Size = new System.Drawing.Size(97, 29);
             this.AdapterLabel.TabIndex = 12;
             this.AdapterLabel.Text = "Adapter";
             // 
@@ -186,9 +197,10 @@
             // 
             this.IPButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.IPButton.Location = new System.Drawing.Point(424, 58);
+            this.IPButton.Location = new System.Drawing.Point(848, 140);
+            this.IPButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.IPButton.Name = "IPButton";
-            this.IPButton.Size = new System.Drawing.Size(75, 23);
+            this.IPButton.Size = new System.Drawing.Size(150, 56);
             this.IPButton.TabIndex = 8;
             this.IPButton.Text = "IP";
             this.IPButton.UseVisualStyleBackColor = true;
@@ -196,12 +208,13 @@
             // 
             // ReloadButton
             // 
-            this.ReloadButton.BackgroundImage = global::IPConfigurator.Properties.Resources.rotate_left_512;
+            this.ReloadButton.BackgroundImage = global::IPConfigurator.Properties.Resources.refresh;
             this.ReloadButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ReloadButton.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ReloadButton.Location = new System.Drawing.Point(477, 31);
+            this.ReloadButton.Location = new System.Drawing.Point(954, 75);
+            this.ReloadButton.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.ReloadButton.Name = "ReloadButton";
-            this.ReloadButton.Size = new System.Drawing.Size(23, 23);
+            this.ReloadButton.Size = new System.Drawing.Size(46, 56);
             this.ReloadButton.TabIndex = 2;
             this.ReloadButton.UseVisualStyleBackColor = true;
             this.ReloadButton.Click += new System.EventHandler(this.ReloadButton_Click);
@@ -209,12 +222,14 @@
             // MenuStrip
             // 
             this.MenuStrip.BackColor = System.Drawing.SystemColors.Window;
+            this.MenuStrip.ImageScalingSize = new System.Drawing.Size(36, 36);
             this.MenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileToolStripMenuItem,
             this.HelpToolStripMenuItem});
             this.MenuStrip.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip.Name = "MenuStrip";
-            this.MenuStrip.Size = new System.Drawing.Size(511, 24);
+            this.MenuStrip.Padding = new System.Windows.Forms.Padding(12, 5, 0, 5);
+            this.MenuStrip.Size = new System.Drawing.Size(1022, 51);
             this.MenuStrip.TabIndex = 15;
             this.MenuStrip.Text = "menuStrip";
             // 
@@ -223,14 +238,14 @@
             this.FileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ExitToolStripMenuItem});
             this.FileToolStripMenuItem.Name = "FileToolStripMenuItem";
-            this.FileToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.FileToolStripMenuItem.Size = new System.Drawing.Size(99, 41);
             this.FileToolStripMenuItem.Text = "File(&F)";
             // 
             // ExitToolStripMenuItem
             // 
             this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
             this.ExitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
-            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(291, 42);
             this.ExitToolStripMenuItem.Text = "Exit(&X)";
             this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -241,34 +256,35 @@
             this.ToolStripSeparator1,
             this.AboutThisProgramToolStripMenuItem});
             this.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem";
-            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.HelpToolStripMenuItem.Size = new System.Drawing.Size(120, 41);
             this.HelpToolStripMenuItem.Text = "Help(&H)";
             // 
             // HelpTopicsToolStripMenuItem
             // 
             this.HelpTopicsToolStripMenuItem.Name = "HelpTopicsToolStripMenuItem";
-            this.HelpTopicsToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.HelpTopicsToolStripMenuItem.Size = new System.Drawing.Size(393, 42);
             this.HelpTopicsToolStripMenuItem.Text = "Help Topics(&H)";
             this.HelpTopicsToolStripMenuItem.Click += new System.EventHandler(this.HelpTopicsToolStripMenuItem_Click);
             // 
             // ToolStripSeparator1
             // 
             this.ToolStripSeparator1.Name = "ToolStripSeparator1";
-            this.ToolStripSeparator1.Size = new System.Drawing.Size(195, 6);
+            this.ToolStripSeparator1.Size = new System.Drawing.Size(390, 6);
             // 
             // AboutThisProgramToolStripMenuItem
             // 
             this.AboutThisProgramToolStripMenuItem.Name = "AboutThisProgramToolStripMenuItem";
-            this.AboutThisProgramToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.AboutThisProgramToolStripMenuItem.Size = new System.Drawing.Size(393, 42);
             this.AboutThisProgramToolStripMenuItem.Text = "About This Program(&A)";
             this.AboutThisProgramToolStripMenuItem.Click += new System.EventHandler(this.AboutThisProgramToolStripMenuItem_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(308, 66);
+            this.label1.Location = new System.Drawing.Point(616, 160);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 12);
+            this.label1.Size = new System.Drawing.Size(73, 29);
             this.label1.TabIndex = 16;
             this.label1.Text = "Class";
             // 
@@ -277,18 +293,19 @@
             this.ClassComboBox.DataSource = this.ClassBindingSource;
             this.ClassComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ClassComboBox.FormattingEnabled = true;
-            this.ClassComboBox.Location = new System.Drawing.Point(349, 60);
+            this.ClassComboBox.Location = new System.Drawing.Point(698, 145);
+            this.ClassComboBox.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.ClassComboBox.Name = "ClassComboBox";
-            this.ClassComboBox.Size = new System.Drawing.Size(62, 20);
+            this.ClassComboBox.Size = new System.Drawing.Size(120, 37);
             this.ClassComboBox.TabIndex = 6;
             this.ClassComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(511, 116);
+            this.ClientSize = new System.Drawing.Size(1022, 280);
             this.Controls.Add(this.ClassComboBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ReloadButton);
@@ -305,6 +322,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.MenuStrip;
+            this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "MainForm";
             this.Text = "IP Configurator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
