@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using System.Windows.Forms;
-using System.Reflection;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using System.Net;
-
-using Newtonsoft.Json.Linq;
 
 using IPConfigurator.Properties;
+using IPConfigurator.Controllers;
+using IPConfigurator.Models;
 
 namespace IPConfigurator
 {
@@ -91,58 +89,6 @@ namespace IPConfigurator
 
         #region Methods
         
-        private UpdateInformation GetUpdateInformation()
-        {
-            bool isOld = false;
-            string updateUrl = null;
-
-            try
-            {
-                using (var client = new WebClient())
-                {
-                    client.Headers.Add(HttpRequestHeader.UserAgent, "IP Configurator");
-
-                    var json = JObject.Parse(client.DownloadString("https://api.github.com/repos/Nuwanda22/IPConfigurator/releases/latest"));
-                    var tag = json["tag_name"].Value<string>();
-                    var lastedVersion = new Version(tag.Substring(1));
-
-                    var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-
-                    isOld = currentVersion < lastedVersion;
-                    updateUrl = json["assets"][0]["browser_download_url"].Value<string>();
-                }
-            }
-            catch { }
-
-            return new UpdateInformation { NeedToUpdate = isOld, UpdateUrl = updateUrl };
-        }
-
-        private async Task<UpdateInformation> GetUpdateInformationAsync()
-        {
-            bool isOld = false;
-            string updateUrl = null;
-
-            try
-            {
-                using (var client = new WebClient())
-                {
-                    client.Headers.Add(HttpRequestHeader.UserAgent, "IP Configurator");
-
-                    var json = JObject.Parse(await client.DownloadStringTaskAsync("https://api.github.com/repos/Nuwanda22/IPConfigurator/releases/latest"));
-                    var tag = json["tag_name"].Value<string>();
-                    var lastedVersion = new Version(tag.Substring(1));
-
-                    var currentVersion = Assembly.GetExecutingAssembly().GetName().Version;
-
-                    isOld = currentVersion < lastedVersion;
-                    updateUrl = json["assets"][0]["browser_download_url"].Value<string>();
-                }
-            }
-            catch { }
-
-            return new UpdateInformation { NeedToUpdate = isOld, UpdateUrl = updateUrl };
-        }
-
         private void SetComponentByAdapter()
 		{
 			if (SelectedAdapter != null)
@@ -206,17 +152,11 @@ namespace IPConfigurator
         private void MainForm_Load(object sender, EventArgs e)
         {
             // Check update available
-            GetUpdateInformationAsync().ContinueWith((x) =>
+            var updateInfo = new Updater().GetUpdateInformation();
+            if (updateInfo.IsNeedToUpdate && MessageBox.Show("Do you want to download?", "Update Available", MessageBoxButtons.OKCancel, MessageBoxIcon.Information) == DialogResult.OK)
             {
-                var updateInfo = x.Result;
-                if (updateInfo.NeedToUpdate)
-                {
-                    if (MessageBox.Show("Update Available", "Do you want to download?", MessageBoxButtons.OKCancel) == DialogResult.OK)
-                    {
-                        Process.Start(updateInfo.UpdateUrl);
-                    }
-                }
-            });
+                Process.Start(updateInfo.UpdateUrl);
+            }
 
             // Initialize component's state 
             SetComponentByAdapter();

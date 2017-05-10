@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace IPConfigurator
+namespace IPConfigurator.Models
 {
-	class NetworkAdapter
+	public class NetworkAdapter
 	{
 		/// <summary>
 		/// Win32_NetworkAdapterConfiguration WMI class
@@ -25,11 +25,7 @@ namespace IPConfigurator
 		/// <summary>
 		/// Adapter Name
 		/// </summary>
-		public string Name
-		{
-			get;
-			private set;
-		}
+		public string Name { get; private set; }
 
 		/// <summary>
 		/// If it is false, this adapter is static IP else it is dynamic ip 

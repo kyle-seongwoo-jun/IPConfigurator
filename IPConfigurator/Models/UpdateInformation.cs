@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IPConfigurator
+namespace IPConfigurator.Models
 {
-    class UpdateInformation
+    public class UpdateInformation
     {
-        public bool NeedToUpdate { get; set; }
+        public bool IsNeedToUpdate { get; set; }
 
         public string UpdateUrl { get; set; }
     }

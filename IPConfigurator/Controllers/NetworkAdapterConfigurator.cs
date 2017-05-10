@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Management;
 
-namespace IPConfigurator
+using IPConfigurator.Models;
+
+namespace IPConfigurator.Controllers
 {
-	class NetworkAdapterConfigurator
+	public class NetworkAdapterConfigurator
 	{
 		ManagementClass WMI;
 		ManagementObjectCollection networkAdapterCollection;
