@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 using IPConfigurator.Models;
 
-namespace IPConfigurator.Controllers
+namespace IPConfigurator.Utils
 {
     public class Updater
     {

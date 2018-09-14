@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using IPConfigurator.Properties;
 using IPConfigurator.Controllers;
 using IPConfigurator.Models;
+using IPConfigurator.Utils;
 
 namespace IPConfigurator
 {
