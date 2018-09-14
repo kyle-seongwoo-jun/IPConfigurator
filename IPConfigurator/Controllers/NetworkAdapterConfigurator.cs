@@ -8,16 +8,19 @@ namespace IPConfigurator.Controllers
 {
 	public class NetworkAdapterConfigurator
 	{
-		ManagementClass WMI;
+        static readonly Lazy<NetworkAdapterConfigurator> instance = new Lazy<NetworkAdapterConfigurator>(() => new NetworkAdapterConfigurator());
+        public static NetworkAdapterConfigurator Instance => instance.Value;
+
+        ManagementClass WMI;
 		ManagementObjectCollection networkAdapterCollection;
 
-		public NetworkAdapterConfigurator()
+		protected NetworkAdapterConfigurator()
 		{
 			WMI = new ManagementClass("Win32_NetworkAdapterConfiguration");
 			networkAdapterCollection = WMI.GetInstances();
 		}
 
-		public List<NetworkAdapter> NetworkAdapters
+        public List<NetworkAdapter> NetworkAdapters
 		{
 			get
 			{
@@ -27,7 +30,7 @@ namespace IPConfigurator.Controllers
 				{
 					if ((bool)adapter["IPEnabled"])
 					{
-						list.Add(new NetworkAdapter(WMI, adapter["Description"] as string));
+						list.Add(new NetworkAdapter(WMI, adapter));
 					}
 				}
 				return list;

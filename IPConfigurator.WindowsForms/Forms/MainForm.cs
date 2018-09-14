@@ -76,7 +76,7 @@ namespace IPConfigurator
         public MainForm()
 		{
 			InitializeComponent();
-			networkAdapterConfingurator = new NetworkAdapterConfigurator();
+			networkAdapterConfingurator = NetworkAdapterConfigurator.Instance;
 			adapters = networkAdapterConfingurator.NetworkAdapters;
 			
 			// Initialize BingingSource

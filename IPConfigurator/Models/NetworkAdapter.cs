@@ -10,17 +10,22 @@ namespace IPConfigurator.Models
 		/// Win32_NetworkAdapterConfiguration WMI class
 		/// </summary>
 		ManagementClass WMI;
+        ManagementBaseObject adapter;
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
 		/// <param name="wmi">Win32_NetworkAdapterConfiguration ManagementClass object</param>
 		/// <param name="adapter">Network adapter name</param>
-		public NetworkAdapter(ManagementClass wmi, string adapter)
+		public NetworkAdapter(ManagementClass wmi, ManagementBaseObject adapter)
 		{
 			WMI = wmi;
-			Name = adapter;
+			this.adapter = adapter;
+
+            Name = adapter["Description"] as string;
 		}
+
+        public ManagementBaseObject BaseObject => adapter;
 
 		/// <summary>
 		/// Adapter Name
