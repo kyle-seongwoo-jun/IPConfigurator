@@ -8,10 +8,10 @@ namespace IPConfigurator.Controllers
 {
 	public class NetworkAdapterConfigurator
 	{
-        static readonly Lazy<NetworkAdapterConfigurator> instance = new Lazy<NetworkAdapterConfigurator>(() => new NetworkAdapterConfigurator());
-        public static NetworkAdapterConfigurator Instance => instance.Value;
+		static readonly Lazy<NetworkAdapterConfigurator> instance = new Lazy<NetworkAdapterConfigurator>(() => new NetworkAdapterConfigurator());
+		public static NetworkAdapterConfigurator Instance => instance.Value;
 
-        ManagementClass WMI;
+		ManagementClass WMI;
 		ManagementObjectCollection networkAdapterCollection;
 
 		protected NetworkAdapterConfigurator()
@@ -20,7 +20,7 @@ namespace IPConfigurator.Controllers
 			networkAdapterCollection = WMI.GetInstances();
 		}
 
-        public List<NetworkAdapter> NetworkAdapters
+		public List<NetworkAdapter> NetworkAdapters
 		{
 			get
 			{

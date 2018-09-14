@@ -10,7 +10,7 @@ namespace IPConfigurator.Models
 		/// Win32_NetworkAdapterConfiguration WMI class
 		/// </summary>
 		ManagementClass WMI;
-        ManagementBaseObject adapter;
+		ManagementBaseObject adapter;
 
 		/// <summary>
 		/// Constructor
@@ -22,10 +22,10 @@ namespace IPConfigurator.Models
 			WMI = wmi;
 			this.adapter = adapter;
 
-            Name = adapter["Description"] as string;
+			Name = adapter["Description"] as string;
 		}
 
-        public ManagementBaseObject BaseObject => adapter;
+		public ManagementBaseObject BaseObject => adapter;
 
 		/// <summary>
 		/// Adapter Name
@@ -62,17 +62,17 @@ namespace IPConfigurator.Models
 				{
 					if (Name.Equals(adapter["Description"]))
 					{
-                        var ip = (adapter["IPAddress"] as string[]) ?? new[] { "" };
-                        var subnetMask = (adapter["IPSubnet"] as string[]) ?? new[] { "" };
-                        var gateway = (adapter["DefaultIPGateway"] as string[]) ?? new[] { "" };
-                        var dns = (adapter["DNSServerSearchOrder"] as string[]) ?? new[] { "" };
+						var ip = (adapter["IPAddress"] as string[]) ?? new[] { "" };
+						var subnetMask = (adapter["IPSubnet"] as string[]) ?? new[] { "" };
+						var gateway = (adapter["DefaultIPGateway"] as string[]) ?? new[] { "" };
+						var dns = (adapter["DNSServerSearchOrder"] as string[]) ?? new[] { "" };
 
-                        dic.Add("IP Address", string.Join(", ", ip));
-                        dic.Add("Subnet Mask", string.Join(", ", subnetMask));
-                        dic.Add("Gateway", string.Join(", ", gateway));
-                        dic.Add("DNS Server", string.Join(", ", dns));
-                        
-                        return dic;
+						dic.Add("IP Address", string.Join(", ", ip));
+						dic.Add("Subnet Mask", string.Join(", ", subnetMask));
+						dic.Add("Gateway", string.Join(", ", gateway));
+						dic.Add("DNS Server", string.Join(", ", dns));
+
+						return dic;
 					}
 				}
 
@@ -116,16 +116,16 @@ namespace IPConfigurator.Models
 			{
 				if (Name.Equals(adapter["Description"]))
 				{
-                    ManagementBaseObject newGateway = adapter.GetMethodParameters("SetGateways");
-                    newGateway["DefaultIPGateway"] = null;
-                    newGateway["GatewayCostMetric"] = new int[] { 0 };
+					ManagementBaseObject newGateway = adapter.GetMethodParameters("SetGateways");
+					newGateway["DefaultIPGateway"] = null;
+					newGateway["GatewayCostMetric"] = new int[] { 0 };
 
-                    ManagementBaseObject nullDNS = adapter.GetMethodParameters("SetDNSServerSearchOrder");
+					ManagementBaseObject nullDNS = adapter.GetMethodParameters("SetDNSServerSearchOrder");
 					nullDNS["DNSServerSearchOrder"] = null;
 
 					adapter.InvokeMethod("EnableDHCP", null);
-                    adapter.InvokeMethod("SetGateways", newGateway, null);
-                    adapter.InvokeMethod("SetDNSServerSearchOrder", nullDNS, null);
+					adapter.InvokeMethod("SetGateways", newGateway, null);
+					adapter.InvokeMethod("SetDNSServerSearchOrder", nullDNS, null);
 				}
 			}
 		}
