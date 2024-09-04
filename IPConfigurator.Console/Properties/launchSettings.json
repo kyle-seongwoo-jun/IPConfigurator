@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "IPConfigurator.Console": {
+      "commandName": "Project",
+      "commandLineArgs": "list"
+    }
+  }
+}
